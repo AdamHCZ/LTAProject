@@ -1,8 +1,5 @@
 package programas_java;
 
-public class Capital {
-
-    
-
+public class Plan_curricular {
     
 }

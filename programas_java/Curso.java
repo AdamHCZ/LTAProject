@@ -3,50 +3,60 @@ package programas_java;
 public class Curso {
 
     private String Nombre_curso;
-    private String Aula;
-    private int Horario;
-    private int capacidad;
-    private String fecha_inicio;
-    private String fecha_final;
+    private String Paralelo;
+    private double Costo;
+    private String Formato;
+    private int Cupos;
+    private String Gestion;
     private String Docente;
-    private String Plataforma;
+    private int Duracion;
 
-
+    public Curso(String nombre_curso, String paralelo, double costo, String formato, int cupos, String gestion,
+            String docente, int duracion) {
+        Nombre_curso = nombre_curso;
+        Paralelo = paralelo;
+        Costo = costo;
+        Formato = formato;
+        Cupos = cupos;
+        Gestion = gestion;
+        Docente = docente;
+        Duracion = duracion;
+    }
     public String getNombre_curso() {
         return Nombre_curso;
     }
     public void setNombre_curso(String nombre_curso) {
         Nombre_curso = nombre_curso;
     }
-    public String getAula() {
-        return Aula;
+    public String getParalelo() {
+        return Paralelo;
     }
-    public void setAula(String aula) {
-        Aula = aula;
+    public void setParalelo(String paralelo) {
+        Paralelo = paralelo;
     }
-    public int getHorario() {
-        return Horario;
+    public double getCosto() {
+        return Costo;
     }
-    public void setHorario(int horario) {
-        Horario = horario;
+    public void setCosto(double costo) {
+        Costo = costo;
     }
-    public int getCapacidad() {
-        return capacidad;
+    public String getFormato() {
+        return Formato;
     }
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
+    public void setFormato(String formato) {
+        Formato = formato;
     }
-    public String getFecha_inicio() {
-        return fecha_inicio;
+    public int getCupos() {
+        return Cupos;
     }
-    public void setFecha_inicio(String fecha_inicio) {
-        this.fecha_inicio = fecha_inicio;
+    public void setCupos(int cupos) {
+        Cupos = cupos;
     }
-    public String getFecha_final() {
-        return fecha_final;
+    public String getGestion() {
+        return Gestion;
     }
-    public void setFecha_final(String fecha_final) {
-        this.fecha_final = fecha_final;
+    public void setGestion(String gestion) {
+        Gestion = gestion;
     }
     public String getDocente() {
         return Docente;
@@ -54,11 +64,11 @@ public class Curso {
     public void setDocente(String docente) {
         Docente = docente;
     }
-    public String getPlataforma() {
-        return Plataforma;
+    public int getDuracion() {
+        return Duracion;
     }
-    public void setPlataforma(String plataforma) {
-        Plataforma = plataforma;
+    public void setDuracion(int duracion) {
+        Duracion = duracion;
     }
 
     
