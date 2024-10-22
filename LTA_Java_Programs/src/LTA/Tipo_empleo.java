@@ -1,5 +1,6 @@
+package LTA;
 public class Tipo_empleo {
-    private String Nombre_empleo;\
+    private String Nombre_empleo;
     private int Nivel;
 
     public Tipo_empleo(String nombre_empleo, int nivel) {

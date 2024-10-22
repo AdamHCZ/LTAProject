@@ -1,4 +1,4 @@
-package programas_java;
+package LTA;
 
 public class Horario {
     private String Disponible;

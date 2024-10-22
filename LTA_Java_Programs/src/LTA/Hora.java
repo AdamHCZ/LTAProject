@@ -1,4 +1,4 @@
-package programas_java;
+package LTA;
 
 public class Hora {
     private String Dia;
