@@ -1,5 +1,5 @@
 package LTA;
-
+//para probar
 public class Hora {
     private String Dia;
     private String Hora_entrada;
