@@ -26,10 +26,10 @@ public class ventanacrearcurso extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField_2;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_3;
+	private JTextField cupos;
+	private JTextField paralelo;
+	private JTextField costo;
+	private JTextField docente;
 
 	/**
 	 * Launch the application.
@@ -78,7 +78,7 @@ public class ventanacrearcurso extends JFrame {
 		JLabel lblNewLabel = new JLabel("PARALELO:");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Cambria", Font.BOLD, 30));
-		lblNewLabel.setBounds(10, 132, 213, 46);
+		lblNewLabel.setBounds(10, 132, 159, 46);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblCosto = new JLabel("COSTO:");
@@ -116,34 +116,44 @@ public class ventanacrearcurso extends JFrame {
 		list.setBounds(100, 354, 1, 1);
 		contentPane.add(list);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(181, 248, 738, 43);
-		contentPane.add(textField_2);
+		cupos = new JTextField();
+		cupos.setColumns(10);
+		cupos.setBounds(181, 248, 738, 43);
+		contentPane.add(cupos);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(181, 132, 738, 43);
-		contentPane.add(textField);
+		paralelo = new JTextField();
+		paralelo.setColumns(10);
+		paralelo.setBounds(181, 132, 738, 43);
+		contentPane.add(paralelo);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(181, 190, 738, 43);
-		contentPane.add(textField_1);
+		costo = new JTextField();
+		costo.setColumns(10);
+		costo.setBounds(181, 190, 738, 43);
+		contentPane.add(costo);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(181, 303, 738, 43);
-		contentPane.add(textField_3);
+		docente = new JTextField();
+		docente.setColumns(10);
+		docente.setBounds(181, 303, 738, 43);
+		contentPane.add(docente);
 		
-		JRadioButton rdbtnPrecencial = new JRadioButton("PRECENCIAL");
-		rdbtnPrecencial.setForeground(new Color(0, 0, 0));
-		rdbtnPrecencial.setBounds(237, 382, 168, 46);
-		contentPane.add(rdbtnPrecencial);
+		JRadioButton precencial = new JRadioButton("PRECENCIAL");
+		precencial.setFont(new Font("Cambria", Font.BOLD, 20));
+		precencial.setBackground(new Color(255, 255, 255));
+		precencial.setForeground(new Color(0, 0, 0));
+		precencial.setBounds(237, 382, 168, 46);
+		contentPane.add(precencial);
 		
-		JRadioButton rdbtnVirtual = new JRadioButton("VIRTUAL");
-		rdbtnVirtual.setForeground(new Color(0, 0, 0));
-		rdbtnVirtual.setBounds(459, 382, 168, 46);
-		contentPane.add(rdbtnVirtual);
+		JRadioButton virtual = new JRadioButton("VIRTUAL");
+		virtual.setFont(new Font("Cambria", Font.BOLD, 20));
+		virtual.setBackground(new Color(255, 255, 255));
+		virtual.setForeground(new Color(0, 0, 0));
+		virtual.setBounds(459, 382, 168, 46);
+		contentPane.add(virtual);
+		
+		JButton aceptar = new JButton("aceptar");
+		aceptar.setFont(new Font("Cambria", Font.BOLD, 20));
+		aceptar.setBackground(new Color(255, 255, 255));
+		aceptar.setBounds(368, 459, 245, 46);
+		contentPane.add(aceptar);
 	}
 }

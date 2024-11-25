@@ -73,40 +73,40 @@ public class ventaregistro extends JFrame {
         contentPane.add(lblNewLabel);
 
         // Botón "Ver Estudiantes"
-        JButton btnEstudiantes = new JButton("VER ESTUDIANTES");
-        btnEstudiantes.setBackground(new Color(255, 255, 255));
-        btnEstudiantes.setFont(new Font("Cambria", Font.BOLD, 20));
-        btnEstudiantes.setBounds(105, 100, 271, 50);
-        btnEstudiantes.addActionListener(new ActionListener() {
+        JButton verestudiante = new JButton("VER ESTUDIANTES");
+        verestudiante.setBackground(new Color(255, 255, 255));
+        verestudiante.setFont(new Font("Cambria", Font.BOLD, 20));
+        verestudiante.setBounds(105, 100, 271, 50);
+        verestudiante.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 actualizarLista("Estudiantes");
             }
         });
-        contentPane.add(btnEstudiantes);
+        contentPane.add(verestudiante);
 
         // Botón "Ver Trabajadores"
-        JButton btnTrabajadores = new JButton("VER TRABAJADORES");
-        btnTrabajadores.setBackground(new Color(255, 255, 255));
-        btnTrabajadores.setFont(new Font("Cambria", Font.BOLD, 20));
-        btnTrabajadores.setBounds(556, 100, 271, 50);
-        btnTrabajadores.addActionListener(new ActionListener() {
+        JButton vertrabajadores = new JButton("VER TRABAJADORES");
+        vertrabajadores.setBackground(new Color(255, 255, 255));
+        vertrabajadores.setFont(new Font("Cambria", Font.BOLD, 20));
+        vertrabajadores.setBounds(556, 100, 271, 50);
+        vertrabajadores.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 actualizarLista("Trabajadores");
             }
         });
-        contentPane.add(btnTrabajadores);
+        contentPane.add(vertrabajadores);
 
         // Botón "Ver Docentes"
-        JButton btnDocentes = new JButton("VER DOCENTES");
-        btnDocentes.setBackground(new Color(255, 255, 255));
-        btnDocentes.setFont(new Font("Cambria", Font.BOLD, 20));
-        btnDocentes.setBounds(336, 180, 271, 50);
-        btnDocentes.addActionListener(new ActionListener() {
+        JButton verdocentes = new JButton("VER DOCENTES");
+        verdocentes.setBackground(new Color(255, 255, 255));
+        verdocentes.setFont(new Font("Cambria", Font.BOLD, 20));
+        verdocentes.setBounds(336, 180, 271, 50);
+        verdocentes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 actualizarLista("Docentes");
             }
         });
-        contentPane.add(btnDocentes);
+        contentPane.add(verdocentes);
 
         // Modelo de lista y JList
         listModel = new DefaultListModel<>();
