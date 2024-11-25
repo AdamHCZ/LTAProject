@@ -12,7 +12,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
 
-public class ventanaprueba extends JFrame {
+public class ventanainicio extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
@@ -23,7 +23,7 @@ public class ventanaprueba extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ventanaprueba frame = new ventanaprueba();
+					ventanainicio frame = new ventanainicio();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,12 +35,12 @@ public class ventanaprueba extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ventanaprueba() {
+	public ventanainicio() {
 		setBackground(new Color(128, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 652, 512);
+		setBounds(100, 100, 975, 575);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(128, 128, 255));
+		contentPane.setBackground(new Color(0, 0, 255));
 		contentPane.setForeground(new Color(0, 0, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -48,21 +48,26 @@ public class ventanaprueba extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton inicio = new JButton("INICIO");
-		inicio.setBackground(new Color(0, 0, 255));
+		inicio.setBackground(new Color(0, 255, 255));
 		inicio.setForeground(new Color(0, 0, 0));
 		inicio.setFont(new Font("Cambria", Font.BOLD, 22));
 		inicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				 // Crea y muestra la nueva ventana
+	            ventanamenu menu = new ventanamenu();
+	            menu.setVisible(true);
+	            // Cierra la ventana actual
+	            dispose();
 			}
 		});
-		inicio.setBounds(151, 264, 307, 82);
+		inicio.setBounds(330, 267, 307, 61);
 		contentPane.add(inicio);
 		
 		JLabel lblNewLabel = new JLabel("BIENVENIDO A LTA");
 		lblNewLabel.setFont(new Font("Candara", Font.BOLD, 36));
-		lblNewLabel.setBackground(new Color(0, 0, 0));
-		lblNewLabel.setForeground(new Color(0, 0, 64));
-		lblNewLabel.setBounds(151, 138, 307, 93);
+		lblNewLabel.setBackground(new Color(255, 255, 255));
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setBounds(330, 164, 307, 93);
 		contentPane.add(lblNewLabel);
 	}
 }
