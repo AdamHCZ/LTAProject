@@ -1,6 +1,5 @@
 package LTA;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -9,15 +8,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JTextField;
 import javax.swing.JLabel;
-import javax.swing.JTextPane;
 
-public class ventana1 extends JFrame {
-
+public class ventanaprueba extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
@@ -28,7 +23,7 @@ public class ventana1 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ventana1 frame = new ventana1();
+					ventanaprueba frame = new ventanaprueba();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +35,7 @@ public class ventana1 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ventana1() {
+	public ventanaprueba() {
 		setBackground(new Color(128, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 652, 512);
