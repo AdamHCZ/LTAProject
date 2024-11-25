@@ -38,7 +38,7 @@ public class ventanainicio extends JFrame {
 	public ventanainicio() {
 		setBackground(new Color(128, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 975, 575);
+		setBounds(100, 100, 975, 570);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 0, 255));
 		contentPane.setForeground(new Color(0, 0, 0));
