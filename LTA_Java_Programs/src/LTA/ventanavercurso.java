@@ -11,6 +11,9 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.TextArea;
+import java.awt.List;
+import java.awt.Canvas;
 
 public class ventanavercurso extends JFrame {
 
@@ -61,6 +64,7 @@ public class ventanavercurso extends JFrame {
 		contentPane.add(volvermenu);
 		
 		JLabel lblNewLabel = new JLabel("VISTA DE CURSOS");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Cambria", Font.BOLD, 40));
 		lblNewLabel.setBounds(322, 58, 339, 47);
 		contentPane.add(lblNewLabel);
