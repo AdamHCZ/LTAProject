@@ -183,6 +183,14 @@ public class ventanaestudiante extends JFrame {
         guardar.setBackground(new Color(255, 255, 255));
         guardar.setFont(new Font("Cambria", Font.BOLD, 20));
         guardar.setBounds(369, 454, 216, 41);
+        guardar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // vuelve la ventanamenu
+                ventanarealizado menu = new ventanarealizado();
+                menu.setVisible(true);
+                dispose();
+            }
+        });
         contentPane.add(guardar);
 	}
 }

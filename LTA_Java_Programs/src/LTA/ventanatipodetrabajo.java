@@ -71,35 +71,52 @@ public class ventanatipodetrabajo extends JFrame {
         lblNewLabel_1.setBounds(257, 39, 414, 67);
         contentPane.add(lblNewLabel_1);
         
-        JButton btnNewButton = new JButton("DOCENTE");
-        btnNewButton.setFont(new Font("Cambria", Font.BOLD, 30));
-        btnNewButton.setBackground(new Color(255, 255, 255));
-        btnNewButton.setBounds(10, 116, 293, 67);
-        contentPane.add(btnNewButton);
+        JButton docente = new JButton("DOCENTE");
+        docente.setFont(new Font("Cambria", Font.BOLD, 30));
+        docente.setBackground(new Color(255, 255, 255));
+        docente.setBounds(10, 116, 293, 67);
+        contentPane.add(docente);
         
-        JButton btnDirector = new JButton("DIRECTOR");
-        btnDirector.setFont(new Font("Cambria", Font.BOLD, 30));
-        btnDirector.setBackground(Color.WHITE);
-        btnDirector.setBounds(10, 193, 293, 67);
-        contentPane.add(btnDirector);
+        JButton director = new JButton("DIRECTOR");
+        director.setFont(new Font("Cambria", Font.BOLD, 30));
+        director.setBackground(Color.WHITE);
+        director.setBounds(10, 193, 293, 67);
+        contentPane.add(director);
         
-        JButton btnLimpieza = new JButton("LIMPIEZA");
-        btnLimpieza.setFont(new Font("Cambria", Font.BOLD, 30));
-        btnLimpieza.setBackground(Color.WHITE);
-        btnLimpieza.setBounds(10, 270, 293, 67);
-        contentPane.add(btnLimpieza);
+        JButton limpieza = new JButton("LIMPIEZA");
+        limpieza.setFont(new Font("Cambria", Font.BOLD, 30));
+        limpieza.setBackground(Color.WHITE);
+        limpieza.setBounds(10, 270, 293, 67);
+        contentPane.add(limpieza);
         
-        JButton btnMantenimiento = new JButton("MANTENIMIENTO");
-        btnMantenimiento.setFont(new Font("Cambria", Font.BOLD, 30));
-        btnMantenimiento.setBackground(Color.WHITE);
-        btnMantenimiento.setBounds(10, 347, 293, 67);
-        contentPane.add(btnMantenimiento);
+        JButton mantenimiento = new JButton("MANTENIMIENTO");
+        mantenimiento.setFont(new Font("Cambria", Font.BOLD, 30));
+        mantenimiento.setBackground(Color.WHITE);
+        mantenimiento.setBounds(10, 347, 293, 67);
+        contentPane.add(mantenimiento);
         
-        JButton btnAdministracion = new JButton("ADMINISTRACION");
-        btnAdministracion.setFont(new Font("Cambria", Font.BOLD, 30));
-        btnAdministracion.setBackground(Color.WHITE);
-        btnAdministracion.setBounds(10, 424, 293, 67);
-        contentPane.add(btnAdministracion);
+        JButton administracion = new JButton("ADMINISTRACION");
+        administracion.setFont(new Font("Cambria", Font.BOLD, 30));
+        administracion.setBackground(Color.WHITE);
+        administracion.setBounds(10, 424, 293, 67);
+        contentPane.add(administracion);
+        
+        JButton guardar = new JButton("GUARDAR");
+        guardar.setFont(new Font("Cambria", Font.BOLD, 30));
+        guardar.setBackground(Color.WHITE);
+        guardar.setBounds(697, 454, 254, 67);
+        guardar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // vuelve la ventanamenu
+                ventanarealizado menu = new ventanarealizado();
+                menu.setVisible(true);
+                dispose();
+            }
+        });
+        contentPane.add(guardar);
+        
+        
+		
         
 	}
 }

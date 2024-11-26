@@ -184,6 +184,14 @@ public class ventanatrabajador extends JFrame {
         guardar.setBackground(new Color(255, 255, 255));
         guardar.setFont(new Font("Cambria", Font.BOLD, 20));
         guardar.setBounds(371, 479, 216, 41);
+        guardar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Crea una instancia de la ventana ventanatipodetrabajo
+                ventanatipodetrabajo nuevaVentana = new ventanatipodetrabajo();
+                nuevaVentana.setVisible(true); // Haz visible la nueva ventana
+                dispose(); // Opcional: cierra la ventana actual si ya no se necesita
+            }
+        });
         contentPane.add(guardar);
         
         JLabel lblSueldo = new JLabel("SUELDO:");

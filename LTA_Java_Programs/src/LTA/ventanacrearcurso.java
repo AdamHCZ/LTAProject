@@ -154,6 +154,13 @@ public class ventanacrearcurso extends JFrame {
 		aceptar.setFont(new Font("Cambria", Font.BOLD, 20));
 		aceptar.setBackground(new Color(255, 255, 255));
 		aceptar.setBounds(368, 459, 245, 46);
+		aceptar.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent e) {
+             // vuelve la ventanamenu
+             vetajahorario menu = new vetajahorario();
+             menu.setVisible(true);
+             dispose();
+         }});
 		contentPane.add(aceptar);
 	}
 }
