@@ -10,8 +10,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
 
 public class ventanatrabajador extends JFrame {
 
@@ -23,7 +26,6 @@ public class ventanatrabajador extends JFrame {
 	private JTextField fechadenacimiento;
 	private JTextField telefono;
 	private JTextField ci;
-	private JTextField edad;
 	private JTextField textField_7;
 	private JTextField textField;
 
@@ -163,17 +165,25 @@ public class ventanatrabajador extends JFrame {
         ci.setBounds(65, 318, 362, 39);
         contentPane.add(ci);
         
-        JLabel lblNewLabel_1_3_1 = new JLabel("EDAD:");
+        JLabel lblNewLabel_1_3_1 = new JLabel("TIPO DE TRABAJO");
         lblNewLabel_1_3_1.setForeground(Color.WHITE);
         lblNewLabel_1_3_1.setFont(new Font("Cambria", Font.BOLD, 30));
         lblNewLabel_1_3_1.setBackground(Color.WHITE);
-        lblNewLabel_1_3_1.setBounds(448, 318, 90, 50);
+        lblNewLabel_1_3_1.setBounds(448, 318, 261, 50);
         contentPane.add(lblNewLabel_1_3_1);
         
-        edad = new JTextField();
-        edad.setColumns(10);
-        edad.setBounds(565, 318, 238, 39);
-        contentPane.add(edad);
+     // Creación del JComboBox con las opciones de trabajos
+        JComboBox<String> tipodetrabajo = new JComboBox<>();
+        tipodetrabajo.setBounds(727, 318, 219, 44);
+        contentPane.add(tipodetrabajo);
+
+        // Agregar las opciones al JComboBox
+        tipodetrabajo.addItem("Docente");
+        tipodetrabajo.addItem("Director");
+        tipodetrabajo.addItem("Limpieza");
+        tipodetrabajo.addItem("Mantenimiento");
+        tipodetrabajo.addItem("Administración");
+
         
         textField_7 = new JTextField();
         textField_7.setColumns(10);
@@ -186,12 +196,69 @@ public class ventanatrabajador extends JFrame {
         guardar.setBounds(371, 479, 216, 41);
         guardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Crea una instancia de la ventana ventanatipodetrabajo
-                ventanatipodetrabajo nuevaVentana = new ventanatipodetrabajo();
+                // Validación de campos
+                if (nombre.getText().isEmpty() || apellidopaterno.getText().isEmpty() || apellidomaterno.getText().isEmpty() ||
+                    fechadenacimiento.getText().isEmpty() || telefono.getText().isEmpty() || ci.getText().isEmpty() ||
+                     textField_7.getText().isEmpty() || textField.getText().isEmpty())  {
+
+                    // Mostrar mensaje de error si algún campo está vacío
+                    JOptionPane.showMessageDialog(
+                        null, 
+                        "Por favor, complete todos los campos antes de guardar.", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+
+                // Validación específica para ciertos campos
+                if (!telefono.getText().matches("\\d+")) {
+                    JOptionPane.showMessageDialog(
+                        null, 
+                        "El campo 'Teléfono' debe contener solo números.", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+
+                if (!textField.getText().matches("\\d+(\\.\\d{1,2})?")) { // Sueldo debe ser un número decimal
+                    JOptionPane.showMessageDialog(
+                        null, 
+                        "El campo 'Sueldo' debe contener un valor numérico válido (ej. 1000.50).", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+
+                if (!fechadenacimiento.getText().matches("\\d{4}-\\d{2}-\\d{2}")) { // Fecha en formato YYYY-MM-DD
+                    JOptionPane.showMessageDialog(
+                        null, 
+                        "El campo 'Fecha de Nacimiento' debe estar en el formato YYYY-MM-DD.", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+                
+                if (!ci.getText().matches("\\d+")) { // Fecha en formato YYYY-MM-DD
+                    JOptionPane.showMessageDialog(
+                        null, 
+                        "El campo 'CI' debe estar con numeros", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+
+                // Mostrar ventana de tipo de trabajo si todas las validaciones pasan
+                ventanarealizado nuevaVentana = new ventanarealizado();
                 nuevaVentana.setVisible(true); // Haz visible la nueva ventana
-                dispose(); // Opcional: cierra la ventana actual si ya no se necesita
+                dispose(); // Cierra la ventana actual
             }
         });
+
         contentPane.add(guardar);
         
         JLabel lblSueldo = new JLabel("SUELDO:");
@@ -205,5 +272,7 @@ public class ventanatrabajador extends JFrame {
         textField.setColumns(10);
         textField.setBounds(154, 431, 784, 39);
         contentPane.add(textField);
+        
+        
 	}
 }

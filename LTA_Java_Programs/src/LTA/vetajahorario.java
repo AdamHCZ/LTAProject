@@ -1,127 +1,119 @@
 package LTA;
 
-import java.awt.EventQueue;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
-import javax.swing.JEditorPane;
-import java.awt.Font;
+import javax.swing.table.DefaultTableModel;
 
 public class vetajahorario extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+    private static final long serialVersionUID = 1L;
+    private JPanel contentPane;
+    private JTable tblHorario;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					vetajahorario frame = new vetajahorario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                vetajahorario frame = new vetajahorario();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
-	/**
-	 * Create the frame.
-	 */
-	public vetajahorario() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 973, 567);
-		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 0, 255));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+    public vetajahorario() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 973, 567);
+        contentPane = new JPanel();
+        contentPane.setBackground(new Color(0, 0, 255));
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
 
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JButton volvercurso = new JButton("volver");
-		volvercurso.setBounds(10, 10, 99, 26);
-		volvercurso.setForeground(new Color(0, 0, 0));
-		volvercurso.setBackground(new Color(192, 192, 192));
-		volvercurso.addActionListener(new ActionListener() {
+        // Crear la tabla
+        String[] columnNames = { "Hora", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
+        String[][] data = {
+            { "8:00-10:00", "", "", "", "", "" },
+            { "10:00-12:00", "", "", "", "", "" },
+            { "14:00-16:00", "", "", "", "", "" },
+            { "16:00-18:00", "", "", "", "", "" },
+            { "18:00-20:00", "", "", "", "", "" },
+            { "20:00-22:00", "", "", "", "", "" },
+        };
+
+        DefaultTableModel model = new DefaultTableModel(data, columnNames) {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return column != 0; // La primera columna no es editable
+            }
+        };
+
+        tblHorario = new JTable(model);
+        tblHorario.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        tblHorario.setRowHeight(40);
+        tblHorario.setBackground(Color.WHITE);
+        tblHorario.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 16));
+        tblHorario.getTableHeader().setBackground(new Color(192, 192, 192));
+        tblHorario.setSelectionBackground(new Color(135, 206, 250));
+
+        // Agregar evento para cambiar color de las celdas seleccionadas
+        tblHorario.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int row = tblHorario.getSelectedRow();
+                int col = tblHorario.getSelectedColumn();
+                if (col > 0) { // Asegurarse de no incluir la columna de horas
+                    tblHorario.setValueAt("Seleccionado", row, col);
+                }
+            }
+        });
+
+        JScrollPane scrollPane = new JScrollPane(tblHorario);
+        scrollPane.setBounds(10, 10, 935, 400);
+        contentPane.add(scrollPane);
+
+        // Botón "Volver"
+        JButton volvercurso = new JButton("Volver");
+        volvercurso.setBounds(10, 420, 120, 40);
+        volvercurso.setForeground(Color.BLACK);
+        volvercurso.setBackground(new Color(192, 192, 192));
+        volvercurso.setFont(new Font("SansSerif", Font.BOLD, 14));
+        volvercurso.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // vuelve la ventanamenu
+                // Vuelve a la ventana anterior
                 ventanacrearcurso menu = new ventanacrearcurso();
                 menu.setVisible(true);
                 dispose();
             }
         });
-        contentPane.setLayout(null);
         contentPane.add(volvercurso);
-        
-        JButton btnNewButton = new JButton("LUNES");
-        btnNewButton.setFont(new Font("Dialog", Font.BOLD, 20));
-        btnNewButton.setBounds(110, 60, 160, 57);
-        contentPane.add(btnNewButton);
-        
-        JButton btnMertes = new JButton("MERTES");
-        btnMertes.setFont(new Font("Dialog", Font.BOLD, 20));
-        btnMertes.setBounds(271, 60, 160, 57);
-        contentPane.add(btnMertes);
-        
-        JButton btnMiercoles = new JButton("MIERCOLES");
-        btnMiercoles.setFont(new Font("Dialog", Font.BOLD, 20));
-        btnMiercoles.setBounds(432, 60, 160, 57);
-        contentPane.add(btnMiercoles);
-        
-        JButton btnJueves = new JButton("JUEVES");
-        btnJueves.setFont(new Font("Dialog", Font.BOLD, 20));
-        btnJueves.setBounds(593, 60, 160, 57);
-        contentPane.add(btnJueves);
-        
-        JButton btnVierne = new JButton("VIERNES");
-        btnVierne.setFont(new Font("Dialog", Font.BOLD, 20));
-        btnVierne.setBounds(753, 60, 160, 57);
-        contentPane.add(btnVierne);
-        
-        JButton btnNewButton_5 = new JButton("8:00-10:00");
-        btnNewButton_5.setFont(new Font("Dialog", Font.BOLD, 12));
-        btnNewButton_5.setBounds(10, 116, 99, 57);
-        contentPane.add(btnNewButton_5);
-        
-        JButton btnNewButton_5_1 = new JButton("10:00-12:00");
-        btnNewButton_5_1.setBounds(10, 173, 99, 57);
-        contentPane.add(btnNewButton_5_1);
-        
-        JButton btnNewButton_5_2 = new JButton("14:00-16:00");
-        btnNewButton_5_2.setBounds(10, 229, 99, 57);
-        contentPane.add(btnNewButton_5_2);
-        
-        JButton btnNewButton_5_3 = new JButton("16:00-18:00");
-        btnNewButton_5_3.setBounds(10, 286, 99, 57);
-        contentPane.add(btnNewButton_5_3);
-        
-        JButton btnNewButton_5_4 = new JButton("18:00-20:00");
-        btnNewButton_5_4.setBounds(10, 341, 99, 57);
-        contentPane.add(btnNewButton_5_4);
-        
-        JButton btnNewButton_5_5 = new JButton("20:00-22:00");
-        btnNewButton_5_5.setBounds(10, 397, 99, 57);
-        contentPane.add(btnNewButton_5_5);
-        
-        JButton INGRESAR = new JButton("INGRESAR");
-        INGRESAR.setFont(new Font("Cambria", Font.BOLD, 20));
-        INGRESAR.setBounds(348, 480, 378, 40);
-        INGRESAR.addActionListener(new ActionListener() {
+
+        // Botón "Guardar"
+        JButton guardarHorario = new JButton("Guardar");
+        guardarHorario.setBounds(820, 420, 120, 40);
+        guardarHorario.setForeground(Color.BLACK);
+        guardarHorario.setBackground(new Color(192, 192, 192));
+        guardarHorario.setFont(new Font("SansSerif", Font.BOLD, 14));
+        guardarHorario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // vuelve la ventanamenu
-                ventanacursorealizado menu = new ventanacursorealizado();
-                menu.setVisible(true);
+            	ventanacursorealizado nuevo = new ventanacursorealizado();
+                nuevo.setVisible(true);
                 dispose();
             }
         });
-        contentPane.add(INGRESAR);
-	}
+        contentPane.add(guardarHorario);
+    }
 }
+

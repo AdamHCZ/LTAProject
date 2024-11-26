@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class ventanamenu extends JFrame {
 
@@ -44,16 +46,15 @@ public class ventanamenu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("QUE DESEA HACER?");
+		lblNewLabel.setBounds(10, 32, 292, 91);
 		lblNewLabel.setBackground(new Color(255, 255, 255));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Cambria", Font.BOLD, 30));
-		lblNewLabel.setBounds(10, 32, 292, 91);
-		contentPane.add(lblNewLabel);
 		
 		JButton volver = new JButton("volver");
+		volver.setBounds(10, 10, 99, 26);
 		volver.setForeground(new Color(0, 0, 0));
 		volver.setBackground(new Color(192, 192, 192));
 		volver.addActionListener(new ActionListener() {
@@ -64,10 +65,9 @@ public class ventanamenu extends JFrame {
                 dispose();
 			}
 		});
-		volver.setBounds(10, 10, 99, 26);
-		contentPane.add(volver);
 		
 		JButton vercurso = new JButton("VER CURSOS");
+		vercurso.setBounds(31, 430, 430, 91);
 		vercurso.setFont(new Font("Cambria", Font.BOLD, 20));
 		vercurso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -78,10 +78,9 @@ public class ventanamenu extends JFrame {
 			}
 		});
 		vercurso.setBackground(new Color(255, 255, 255));
-		vercurso.setBounds(31, 430, 430, 91);
-		contentPane.add(vercurso);
 		
 		JButton verpersonas = new JButton("VER REGISTRO DE PERSONAS");
+		verpersonas.setBounds(31, 121, 430, 91);
 		verpersonas.setFont(new Font("Cambria", Font.BOLD, 20));
 		 verpersonas.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
@@ -92,10 +91,9 @@ public class ventanamenu extends JFrame {
 	            }
 	        });
 		verpersonas.setBackground(new Color(255, 255, 255));
-		verpersonas.setBounds(31, 121, 430, 91);
-		contentPane.add(verpersonas);
 		
 		JButton nuevocurso = new JButton("CREAR NUEVO CURSO");
+		nuevocurso.setBounds(31, 327, 430, 91);
 		nuevocurso.setFont(new Font("Cambria", Font.BOLD, 20));
 		nuevocurso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -106,10 +104,9 @@ public class ventanamenu extends JFrame {
 			}
 		});
 		nuevocurso.setBackground(new Color(255, 255, 255));
-		nuevocurso.setBounds(31, 327, 430, 91);
-		contentPane.add(nuevocurso);
 		
 		JButton editarusuario = new JButton("AÑADIR O EDITAR USAUARIOS");
+		editarusuario.setBounds(31, 224, 430, 91);
 		editarusuario.setFont(new Font("Cambria", Font.BOLD, 20));
 		editarusuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -120,7 +117,12 @@ public class ventanamenu extends JFrame {
 			}
 		});
 		editarusuario.setBackground(new Color(255, 255, 255));
-		editarusuario.setBounds(31, 224, 430, 91);
+		contentPane.setLayout(null);
+		contentPane.add(lblNewLabel);
+		contentPane.add(volver);
+		contentPane.add(vercurso);
+		contentPane.add(verpersonas);
+		contentPane.add(nuevocurso);
 		contentPane.add(editarusuario);
 	}
 }

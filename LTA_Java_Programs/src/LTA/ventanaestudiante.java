@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 
@@ -185,7 +187,46 @@ public class ventanaestudiante extends JFrame {
         guardar.setBounds(369, 454, 216, 41);
         guardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // vuelve la ventanamenu
+                // Validación de campos
+                if (nombre.getText().isEmpty() || apellidopaterno.getText().isEmpty() || apellidomaterno.getText().isEmpty() ||
+                    fechadenacimiento.getText().isEmpty() || telefono.getText().isEmpty() || ci.getText().isEmpty() ||
+                    edad.getText().isEmpty() || textField_7.getText().isEmpty()) {
+                    
+                    // Mostrar mensaje de error si algún campo está vacío
+                    JOptionPane.showMessageDialog(
+                        null, 
+                        "Por favor, complete todos los campos antes de guardar.", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+                
+                // Aquí podrías agregar validaciones adicionales, por ejemplo:
+                // - Verificar que el teléfono y la edad sean numéricos
+                // - Validar el formato de la fecha de nacimiento
+                // - Verificar el formato del correo electrónico
+
+                if (!telefono.getText().matches("\\d+")) {
+                    JOptionPane.showMessageDialog(
+                        null, 
+                        "El campo 'Teléfono' debe contener solo números.", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+
+                if (!edad.getText().matches("\\d+")) {
+                    JOptionPane.showMessageDialog(
+                        null, 
+                        "El campo 'Edad' debe contener solo números.", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+                // Mostrar ventana de éxito si todas las validaciones pasan
                 ventanarealizado menu = new ventanarealizado();
                 menu.setVisible(true);
                 dispose();
