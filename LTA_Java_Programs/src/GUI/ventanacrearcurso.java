@@ -3,8 +3,6 @@ package GUI;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -123,7 +121,18 @@ public class ventanacrearcurso extends JFrame {
         virtual.setFont(new Font("Cambria", Font.BOLD, 20));
         virtual.setBounds(459, 382, 168, 46);
         contentPane.add(virtual);
-
+        
+        
+        JComboBox<String> docente = new JComboBox<>();
+        docente.setBounds(192, 298, 727, 42);
+        contentPane.add(docente);
+     // Agregar una opción predeterminada y los docentes
+        docente.addItem("Seleccione un docente..."); // Opción inicial
+        // Agregar las opciones al JComboBox
+        for (int i = 0; i<19; i++) {
+            docente.addItem("Docente" + i);
+		}
+        
         JButton aceptar = new JButton("aceptar");
         aceptar.setFont(new Font("Cambria", Font.BOLD, 20));
         aceptar.setBounds(368, 459, 245, 46);
@@ -132,17 +141,17 @@ public class ventanacrearcurso extends JFrame {
                 if (paralelo.getText().trim().isEmpty() ||
                     costo.getText().trim().isEmpty() ||
                     cupos.getText().trim().isEmpty() ||
-                   
-                    (!precencial.isSelected() && !virtual.isSelected())) {
+                    (!precencial.isSelected() && !virtual.isSelected())||
+                    docente.getSelectedItem().equals("Seleccione un docente...")) {
                     JOptionPane.showMessageDialog(
                         ventanacrearcurso.this,
-                        "Por favor, complete todos los campos y seleccione una modalidad.",
+                        "Por favor, complete todos los campos, seleccione una modalidad y seleccione un docente.",
                         "Advertencia",
                         JOptionPane.WARNING_MESSAGE
                     );
                     return;
                 } 
-                
+                //ve que sean numeros los cupos
                 if (!cupos.getText().matches("\\d+")) {
                     JOptionPane.showMessageDialog(
                         null, 
@@ -170,15 +179,7 @@ public class ventanacrearcurso extends JFrame {
         });
         contentPane.add(aceptar);
         
-        
-        JComboBox<String> docente = new JComboBox<>();
-        docente.setBounds(192, 298, 727, 42);
-        contentPane.add(docente);
 
-        // Agregar las opciones al JComboBox
-        for (int i = 0; i<19; i++) {
-            docente.addItem("Docente" + i);
-		}
 
 
     }
