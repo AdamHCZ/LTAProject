@@ -1,73 +1,91 @@
 package GUI;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.JLabel;
 
 public class ventanainicio extends JFrame {
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+    private static final long serialVersionUID = 1L;
+    private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ventanainicio frame = new ventanainicio();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+    /**
+     * Launch the application.
+     */
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    ventanainicio frame = new ventanainicio();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
-	/**
-	 * Create the frame.
-	 */
-	public ventanainicio() {
-		setBackground(new Color(128, 255, 255));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 975, 570);
-		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 0, 255));
-		contentPane.setForeground(new Color(0, 0, 0));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+    /**
+     * Create the frame.
+     */
+    public ventanainicio() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 975, 570);
 
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JButton inicio = new JButton("INICIO");
-		inicio.setBackground(new Color(0, 255, 255));
-		inicio.setForeground(new Color(0, 0, 0));
-		inicio.setFont(new Font("Cambria", Font.BOLD, 22));
-		inicio.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 // Crea y muestra la nueva ventana
-	            ventanamenu menu = new ventanamenu();
-	            menu.setVisible(true);
-	            // Cierra la ventana actual
-	            dispose();
-			}
-		});
-		inicio.setBounds(330, 267, 307, 61);
-		contentPane.add(inicio);
-		
-		JLabel lblNewLabel = new JLabel("BIENVENIDO A LTA");
-		lblNewLabel.setFont(new Font("Candara", Font.BOLD, 36));
-		lblNewLabel.setBackground(new Color(255, 255, 255));
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(330, 164, 307, 93);
-		contentPane.add(lblNewLabel);
-	}
+        // Panel principal con BorderLayout
+        contentPane = new JPanel(new BorderLayout());
+        contentPane.setBackground(new Color(0, 0, 255));
+        contentPane.setBorder(new EmptyBorder(20, 20, 20, 20)); // Márgenes alrededor del contenido
+        setContentPane(contentPane);
+
+        // Panel central con GridBagLayout para centrar los elementos
+        JPanel centerPanel = new JPanel(new GridBagLayout());
+        centerPanel.setBackground(new Color(0, 0, 255));
+        contentPane.add(centerPanel, BorderLayout.CENTER);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(20, 20, 20, 20); // Espaciado entre componentes
+        gbc.gridx = 0; // Columna
+        gbc.weightx = 1.0; // Escalabilidad horizontal
+        gbc.weighty = 1.0; // Escalabilidad vertical
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        // Etiqueta de bienvenida
+        JLabel lblNewLabel = new JLabel("BIENVENIDO A LTA");
+        lblNewLabel.setFont(new Font("Candara", Font.BOLD, 36));
+        lblNewLabel.setForeground(Color.WHITE);
+        gbc.gridy = 0; // Fila 0
+        centerPanel.add(lblNewLabel, gbc);
+
+        // Botón de inicio
+        JButton inicio = new JButton("INICIO");
+        inicio.setBackground(new Color(0, 255, 255));
+        inicio.setForeground(Color.BLACK);
+        inicio.setFont(new Font("Cambria", Font.BOLD, 22));
+        inicio.setPreferredSize(new Dimension(200, 50)); // Tamaño preferido para mantener estética
+        inicio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Crea y muestra la nueva ventana
+                ventanamenu menu = new ventanamenu();
+                menu.setVisible(true);
+                // Cierra la ventana actual
+                dispose();
+            }
+        });
+
+        gbc.gridy = 1; // Fila 1 para el botón
+        centerPanel.add(inicio, gbc);
+    }
 }
