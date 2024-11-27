@@ -3,6 +3,7 @@ package GUI;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,6 +15,7 @@ import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
 
 public class ventanacrearcurso extends JFrame {
 
@@ -22,7 +24,6 @@ public class ventanacrearcurso extends JFrame {
     private JTextField cupos;
     private JTextField paralelo;
     private JTextField costo;
-    private JTextField docente;
 
     /**
      * Launch the application.
@@ -84,11 +85,7 @@ public class ventanacrearcurso extends JFrame {
         lblCupos.setBounds(10, 245, 144, 46);
         contentPane.add(lblCupos);
 
-        JLabel lblDocente = new JLabel("DOCENTE:");
-        lblDocente.setForeground(new Color(255, 255, 255));
-        lblDocente.setFont(new Font("Cambria", Font.BOLD, 30));
-        lblDocente.setBounds(10, 298, 144, 46);
-        contentPane.add(lblDocente);
+
 
         JLabel lblNuevoCurso = new JLabel("NUEVO CURSO");
         lblNuevoCurso.setForeground(new Color(255, 255, 255));
@@ -117,11 +114,6 @@ public class ventanacrearcurso extends JFrame {
         contentPane.add(cupos);
         cupos.setColumns(10);
 
-        docente = new JTextField();
-        docente.setBounds(181, 303, 738, 43);
-        contentPane.add(docente);
-        docente.setColumns(10);
-
         JRadioButton precencial = new JRadioButton("PRECENCIAL");
         precencial.setFont(new Font("Cambria", Font.BOLD, 20));
         precencial.setBounds(237, 382, 168, 46);
@@ -140,7 +132,7 @@ public class ventanacrearcurso extends JFrame {
                 if (paralelo.getText().trim().isEmpty() ||
                     costo.getText().trim().isEmpty() ||
                     cupos.getText().trim().isEmpty() ||
-                    docente.getText().trim().isEmpty() ||
+                   
                     (!precencial.isSelected() && !virtual.isSelected())) {
                     JOptionPane.showMessageDialog(
                         ventanacrearcurso.this,
@@ -177,6 +169,18 @@ public class ventanacrearcurso extends JFrame {
             
         });
         contentPane.add(aceptar);
+        
+        
+        JComboBox<String> docente = new JComboBox<>();
+        docente.setBounds(192, 298, 727, 42);
+        contentPane.add(docente);
+
+        // Agregar las opciones al JComboBox
+        for (int i = 0; i<19; i++) {
+            docente.addItem("Docente" + i);
+		}
+
+
     }
 }
 

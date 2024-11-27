@@ -26,7 +26,7 @@ public class ventanaestudiante extends JFrame {
 	private JTextField telefono;
 	private JTextField ci;
 	private JTextField edad;
-	private JTextField textField_7;
+	private JTextField correoelectronico;
 
 	/**
 	 * Launch the application.
@@ -176,10 +176,10 @@ public class ventanaestudiante extends JFrame {
         edad.setBounds(565, 318, 238, 39);
         contentPane.add(edad);
         
-        textField_7 = new JTextField();
-        textField_7.setColumns(10);
-        textField_7.setBounds(162, 403, 784, 39);
-        contentPane.add(textField_7);
+        correoelectronico = new JTextField();
+        correoelectronico.setColumns(10);
+        correoelectronico.setBounds(162, 403, 784, 39);
+        contentPane.add(correoelectronico);
         
         JButton guardar = new JButton("GUARDAR");
         guardar.setBackground(new Color(255, 255, 255));
@@ -190,7 +190,7 @@ public class ventanaestudiante extends JFrame {
                 // Validación de campos
                 if (nombre.getText().isEmpty() || apellidopaterno.getText().isEmpty() || apellidomaterno.getText().isEmpty() ||
                     fechadenacimiento.getText().isEmpty() || telefono.getText().isEmpty() || ci.getText().isEmpty() ||
-                    edad.getText().isEmpty() || textField_7.getText().isEmpty()) {
+                    edad.getText().isEmpty() || correoelectronico.getText().isEmpty()) {
                     
                     // Mostrar mensaje de error si algún campo está vacío
                     JOptionPane.showMessageDialog(
@@ -201,12 +201,7 @@ public class ventanaestudiante extends JFrame {
                     );
                     return;
                 }
-                
-                // Aquí podrías agregar validaciones adicionales, por ejemplo:
-                // - Verificar que el teléfono y la edad sean numéricos
-                // - Validar el formato de la fecha de nacimiento
-                // - Verificar el formato del correo electrónico
-
+                //valida el telefono que sean numeros
                 if (!telefono.getText().matches("\\d+")) {
                     JOptionPane.showMessageDialog(
                         null, 
@@ -216,11 +211,33 @@ public class ventanaestudiante extends JFrame {
                     );
                     return;
                 }
-
+                //valida que el correo sea @gmail
+                if (!correoelectronico.getText().endsWith("@gmail.com")) {
+                    JOptionPane.showMessageDialog(
+                        null, 
+                        "El campo 'Correo' debe ser una dirección de correo válida de Gmail (@gmail.com).", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+                
+                //valida que la edad sea numeros
                 if (!edad.getText().matches("\\d+")) {
                     JOptionPane.showMessageDialog(
                         null, 
                         "El campo 'Edad' debe contener solo números.", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+                
+                //valida que la fehca se pueda leer bien
+                if (!fechadenacimiento.getText().matches("\\d{4}-\\d{2}-\\d{2}")) {
+                    JOptionPane.showMessageDialog(
+                        null, 
+                        "El campo 'FECHA DE NACIMIENTO' debe estar con el siguiente formato YYYY-MM-DD", 
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
