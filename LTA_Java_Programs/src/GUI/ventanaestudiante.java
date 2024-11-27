@@ -233,11 +233,21 @@ public class ventanaestudiante extends JFrame {
                     return;
                 }
                 
-                //valida que la fehca se pueda leer bien
+                //valida que la fecha se pueda leer bien
                 if (!fechadenacimiento.getText().matches("\\d{4}-\\d{2}-\\d{2}")) {
                     JOptionPane.showMessageDialog(
                         null, 
                         "El campo 'FECHA DE NACIMIENTO' debe estar con el siguiente formato YYYY-MM-DD", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+                //valida que el ci sean numeros
+                if (!ci.getText().matches("\\d+")) {
+                    JOptionPane.showMessageDialog(
+                        null, 
+                        "El campo 'CI' debe estar con numeros", 
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );

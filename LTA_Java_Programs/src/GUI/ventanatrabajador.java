@@ -26,8 +26,8 @@ public class ventanatrabajador extends JFrame {
 	private JTextField fechadenacimiento;
 	private JTextField telefono;
 	private JTextField ci;
-	private JTextField textField_7;
-	private JTextField textField;
+	private JTextField correoelectronico;
+	private JTextField sueldo;
 
 	/**
 	 * Launch the application.
@@ -185,10 +185,10 @@ public class ventanatrabajador extends JFrame {
         tipodetrabajo.addItem("Administración");
 
         
-        textField_7 = new JTextField();
-        textField_7.setColumns(10);
-        textField_7.setBounds(154, 378, 784, 39);
-        contentPane.add(textField_7);
+        correoelectronico = new JTextField();
+        correoelectronico.setColumns(10);
+        correoelectronico.setBounds(154, 378, 784, 39);
+        contentPane.add(correoelectronico);
         
         JButton guardar = new JButton("GUARDAR");
         guardar.setBackground(new Color(255, 255, 255));
@@ -199,7 +199,7 @@ public class ventanatrabajador extends JFrame {
                 // Validación de campos
                 if (nombre.getText().isEmpty() || apellidopaterno.getText().isEmpty() || apellidomaterno.getText().isEmpty() ||
                     fechadenacimiento.getText().isEmpty() || telefono.getText().isEmpty() || ci.getText().isEmpty() ||
-                     textField_7.getText().isEmpty() || textField.getText().isEmpty())  {
+                     correoelectronico.getText().isEmpty() || sueldo.getText().isEmpty())  {
 
                     // Mostrar mensaje de error si algún campo está vacío
                     JOptionPane.showMessageDialog(
@@ -211,7 +211,7 @@ public class ventanatrabajador extends JFrame {
                     return;
                 }
 
-                // Validación específica para ciertos campos
+                // Ve que telefono sean numeros
                 if (!telefono.getText().matches("\\d+")) {
                     JOptionPane.showMessageDialog(
                         null, 
@@ -222,7 +222,8 @@ public class ventanatrabajador extends JFrame {
                     return;
                 }
 
-                if (!textField.getText().matches("\\d+(\\.\\d{1,2})?")) { // Sueldo debe ser un número decimal
+                //ve que el sueldo sea un numero
+                if (!sueldo.getText().matches("\\d+(\\.\\d{1,2})?")) { // Sueldo debe ser un número decimal
                     JOptionPane.showMessageDialog(
                         null, 
                         "El campo 'Sueldo' debe contener un valor numérico válido (ej. 1000.50).", 
@@ -231,7 +232,7 @@ public class ventanatrabajador extends JFrame {
                     );
                     return;
                 }
-
+                //ve que la fehca se lea bien
                 if (!fechadenacimiento.getText().matches("\\d{4}-\\d{2}-\\d{2}")) { // Fecha en formato YYYY-MM-DD
                     JOptionPane.showMessageDialog(
                         null, 
@@ -241,11 +242,21 @@ public class ventanatrabajador extends JFrame {
                     );
                     return;
                 }
-                
-                if (!ci.getText().matches("\\d+")) { // Fecha en formato YYYY-MM-DD
+                //ve que el ci este en numeros
+                if (!ci.getText().matches("\\d+")) {
                     JOptionPane.showMessageDialog(
                         null, 
                         "El campo 'CI' debe estar con numeros", 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+                //ve que este bien el correo 
+                if (!correoelectronico.getText().endsWith("@gmail.com")) {
+                    JOptionPane.showMessageDialog(
+                        null, 
+                        "El campo 'Correo' debe ser una dirección de correo válida de Gmail (@gmail.com).", 
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
@@ -268,10 +279,10 @@ public class ventanatrabajador extends JFrame {
         lblSueldo.setBounds(10, 431, 134, 50);
         contentPane.add(lblSueldo);
         
-        textField = new JTextField();
-        textField.setColumns(10);
-        textField.setBounds(154, 431, 784, 39);
-        contentPane.add(textField);
+        sueldo = new JTextField();
+        sueldo.setColumns(10);
+        sueldo.setBounds(154, 431, 784, 39);
+        contentPane.add(sueldo);
         
         
 	}
