@@ -1,19 +1,20 @@
 package GUI;
 
-import java.awt.Color;//
-import java.awt.EventQueue;//
-import java.awt.Font;//
-import java.awt.event.ActionEvent;//
-import java.awt.event.ActionListener;//
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JButton;//
-import javax.swing.JFrame;//
-import javax.swing.JLabel;//
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JPanel;//
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.border.EmptyBorder;//
+import javax.swing.border.EmptyBorder;
 
 public class ventaregistro extends JFrame {
 
@@ -47,74 +48,70 @@ public class ventaregistro extends JFrame {
         contentPane = new JPanel();
         contentPane.setBackground(new Color(0, 0, 255));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentPane.setLayout(new BorderLayout(10, 10));
         setContentPane(contentPane);
-        contentPane.setLayout(null);
+
+        // Panel superior para los botones
+        JPanel panelBotones = new JPanel();
+        panelBotones.setBackground(new Color(255, 255, 255));
+        contentPane.add(panelBotones, BorderLayout.NORTH);
 
         // Botón para volver al menú principal
         JButton volvermenu = new JButton("volver");
-        volvermenu.setForeground(new Color(0, 0, 0));
         volvermenu.setBackground(new Color(192, 192, 192));
+        volvermenu.setFont(new Font("Cambria", Font.PLAIN, 14));
         volvermenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // vuelve a la ventanamenu
                 ventanamenu menu = new ventanamenu();
                 menu.setVisible(true);
                 dispose();
             }
         });
-        volvermenu.setBounds(10, 10, 99, 26);
-        contentPane.add(volvermenu);
-
-        // Etiqueta principal
-        JLabel lblNewLabel = new JLabel("CUADRO DE REGISTROS");
-        lblNewLabel.setForeground(new Color(255, 255, 255));
-        lblNewLabel.setFont(new Font("Cambria", Font.BOLD, 40));
-        lblNewLabel.setBounds(248, 25, 446, 50);
-        contentPane.add(lblNewLabel);
+        panelBotones.add(volvermenu);
 
         // Botón "Ver Estudiantes"
         JButton verestudiante = new JButton("VER ESTUDIANTES");
-        verestudiante.setBackground(new Color(255, 255, 255));
-        verestudiante.setFont(new Font("Cambria", Font.BOLD, 20));
-        verestudiante.setBounds(105, 100, 271, 50);
+        verestudiante.setFont(new Font("Cambria", Font.BOLD, 14));
         verestudiante.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 actualizarLista("Estudiantes");
             }
         });
-        contentPane.add(verestudiante);
+        panelBotones.add(verestudiante);
 
         // Botón "Ver Trabajadores"
         JButton vertrabajadores = new JButton("VER TRABAJADORES");
-        vertrabajadores.setBackground(new Color(255, 255, 255));
-        vertrabajadores.setFont(new Font("Cambria", Font.BOLD, 20));
-        vertrabajadores.setBounds(556, 100, 271, 50);
+        vertrabajadores.setFont(new Font("Cambria", Font.BOLD, 14));
         vertrabajadores.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 actualizarLista("Trabajadores");
             }
         });
-        contentPane.add(vertrabajadores);
+        panelBotones.add(vertrabajadores);
 
         // Botón "Ver Docentes"
         JButton verdocentes = new JButton("VER DOCENTES");
-        verdocentes.setBackground(new Color(255, 255, 255));
-        verdocentes.setFont(new Font("Cambria", Font.BOLD, 20));
-        verdocentes.setBounds(336, 180, 271, 50);
+        verdocentes.setFont(new Font("Cambria", Font.BOLD, 14));
         verdocentes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 actualizarLista("Docentes");
             }
         });
-        contentPane.add(verdocentes);
+        panelBotones.add(verdocentes);
 
-        // Modelo de lista y JList
+        // Área de contenido para la lista
         listModel = new DefaultListModel<>();
         list = new JList<>(listModel);
         list.setFont(new Font("Cambria", Font.PLAIN, 18));
         JScrollPane scrollPane = new JScrollPane(list);
-        scrollPane.setBounds(105, 260, 722, 250);
-        contentPane.add(scrollPane);
+        contentPane.add(scrollPane, BorderLayout.CENTER);
+
+        // Etiqueta para el título (opcional, en la parte superior)
+        JLabel lblNewLabel = new JLabel("CUADRO DE REGISTROS");
+        lblNewLabel.setFont(new Font("Cambria", Font.BOLD, 30));
+        lblNewLabel.setForeground(new Color(255, 255, 255));
+        lblNewLabel.setHorizontalAlignment(JLabel.CENTER);
+        contentPane.add(lblNewLabel, BorderLayout.SOUTH); // Parte inferior
     }
 
     /**
@@ -138,11 +135,7 @@ public class ventaregistro extends JFrame {
                 listModel.addElement("Estudiante 3");
                 listModel.addElement("Estudiante 1");
                 listModel.addElement("Estudiante 2");
-                listModel.addElement("Estudiante 3");
-                listModel.addElement("Estudiante 1");
-                listModel.addElement("Estudiante 2");
-                listModel.addElement("Estudiante 3");
-                listModel.addElement("Estudiante 1");
+                listModel.addElement("Estudiante 3");listModel.addElement("Estudiante 1");
                 listModel.addElement("Estudiante 2");
                 listModel.addElement("Estudiante 3");
                 
@@ -162,5 +155,6 @@ public class ventaregistro extends JFrame {
         }
     }
 }
+
 
 

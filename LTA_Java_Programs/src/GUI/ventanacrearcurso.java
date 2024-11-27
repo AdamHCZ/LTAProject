@@ -22,10 +22,7 @@ public class ventanacrearcurso extends JFrame {
     private JTextField cupos;
     private JTextField paralelo;
     private JTextField costo;
-
-    /**
-     * Launch the application.
-     */
+    
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -38,10 +35,7 @@ public class ventanacrearcurso extends JFrame {
             }
         });
     }
-
-    /**
-     * Create the frame.
-     */
+    
     public ventanacrearcurso() {
         setBackground(new Color(240, 240, 240));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,7 +45,8 @@ public class ventanacrearcurso extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
-
+        
+        //boton volver
         JButton volvermenu = new JButton("volver");
         volvermenu.setBounds(10, 10, 99, 26);
         volvermenu.setForeground(new Color(0, 0, 0));
@@ -64,7 +59,7 @@ public class ventanacrearcurso extends JFrame {
             }
         });
         contentPane.add(volvermenu);
-
+        
         JLabel lblParalelo = new JLabel("PARALELO:");
         lblParalelo.setForeground(new Color(255, 255, 255));
         lblParalelo.setFont(new Font("Cambria", Font.BOLD, 30));
@@ -124,7 +119,7 @@ public class ventanacrearcurso extends JFrame {
         
         
         JComboBox<String> docente = new JComboBox<>();
-        docente.setBounds(192, 298, 727, 42);
+        docente.setBounds(181, 303, 727, 42);
         contentPane.add(docente);
      // Agregar una opción predeterminada y los docentes
         docente.addItem("Seleccione un docente..."); // Opción inicial
@@ -178,6 +173,12 @@ public class ventanacrearcurso extends JFrame {
             
         });
         contentPane.add(aceptar);
+        
+        JLabel lblDocente = new JLabel("DOCENTE:");
+        lblDocente.setForeground(Color.WHITE);
+        lblDocente.setFont(new Font("Cambria", Font.BOLD, 30));
+        lblDocente.setBounds(10, 303, 144, 46);
+        contentPane.add(lblDocente);
         
 
 
