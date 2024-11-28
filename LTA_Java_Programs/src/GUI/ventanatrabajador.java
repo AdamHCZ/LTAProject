@@ -28,6 +28,7 @@ public class ventanatrabajador extends JFrame {
 	private JTextField ci;
 	private JTextField correoelectronico;
 	private JTextField sueldo;
+	int nrtipotrabajador;
 
 	/**
 	 * Launch the application.
@@ -183,8 +184,32 @@ public class ventanatrabajador extends JFrame {
         tipodetrabajo.addItem("Limpieza");
         tipodetrabajo.addItem("Mantenimiento");
         tipodetrabajo.addItem("Administración");
-
-        
+//para que de un numero depende de que seleccione
+        tipodetrabajo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String seleccionado = (String) tipodetrabajo.getSelectedItem();
+                switch (seleccionado) {
+                    case "Docente":
+                    	nrtipotrabajador=1; 
+                        break;
+                    case "Director":
+                    	nrtipotrabajador=2;
+                    	break;
+                    case "Limpieza":
+                    	nrtipotrabajador=3;
+                    	break;
+                    case "Mantenimiento":
+                    	nrtipotrabajador=4;
+                    	break;
+                    case "Administración":
+                    	nrtipotrabajador=5;
+                        break;
+                    default:
+                    	nrtipotrabajador=0;
+                        break;
+                }
+            }
+        });
         correoelectronico = new JTextField();
         correoelectronico.setColumns(10);
         correoelectronico.setBounds(154, 378, 784, 39);
