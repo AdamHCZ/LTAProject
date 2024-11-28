@@ -2,8 +2,6 @@ package GUI;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -34,7 +32,7 @@ public class vetajahorario extends JFrame {
 
     public vetajahorario() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 973, 567);
+        setBounds(100, 100, 1100, 600);
         contentPane = new JPanel();
         contentPane.setBackground(new Color(0, 0, 255));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -42,16 +40,15 @@ public class vetajahorario extends JFrame {
         contentPane.setLayout(null);
 
         // Crear la tabla
-        String[] columnNames = { "Hora", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
+        String[] columnNames = { "Hora", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" };
         String[][] data = {
-            { "8:00-10:00", "", "", "", "", "" },
-            { "10:00-12:00", "", "", "", "", "" },
-            { "14:00-16:00", "", "", "", "", "" },
-            { "16:00-18:00", "", "", "", "", "" },
-            { "18:00-20:00", "", "", "", "", "" },
-            { "20:00-22:00", "", "", "", "", "" },
+            { "8:00-10:00", "Ocupado", "", "", "", "", "" },
+            { "10:00-12:00", "Ocupado", "", "", "", "", "" },
+            { "14:00-16:00", "Ocupado", "", "", "", "", "" },
+            { "16:00-18:00", "Ocupado", "", "", "", "", "" },
+            { "18:00-20:00", "Ocupado", "", "", "", "", "" },
+            { "20:00-22:00", "Ocupado", "", "", "", "", "" },
         };
-
         DefaultTableModel model = new DefaultTableModel(data, columnNames) {
             private static final long serialVersionUID = 1L;
 
@@ -69,19 +66,26 @@ public class vetajahorario extends JFrame {
         tblHorario.getTableHeader().setBackground(new Color(192, 192, 192));
         tblHorario.setSelectionBackground(new Color(135, 206, 250));
 
-        // Agregar evento para cambiar color de las celdas seleccionadas
+        // Agregar evento para manejar selección y deselección
         tblHorario.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 int row = tblHorario.getSelectedRow();
                 int col = tblHorario.getSelectedColumn();
-                if (col > 0) { // Asegurarse de no incluir la columna de horas
-                    tblHorario.setValueAt("Seleccionado", row, col);
+                if (col > 0) { // Evitar modificar la columna de horas
+                    String value = (String) tblHorario.getValueAt(row, col);
+                    if ("Ocupado".equals(value)) {
+                        System.out.println("La celda está ocupada y no puede ser seleccionada.");
+                    } else if ("Seleccionado".equals(value)) {
+                        tblHorario.setValueAt("", row, col); // Deseleccionar
+                    } else {
+                        tblHorario.setValueAt("Seleccionado", row, col); // Seleccionar
+                    }
                 }
             }
         });
 
         JScrollPane scrollPane = new JScrollPane(tblHorario);
-        scrollPane.setBounds(10, 10, 935, 400);
+        scrollPane.setBounds(10, 10, 1060, 400);
         contentPane.add(scrollPane);
 
         // Botón "Volver"
@@ -90,30 +94,26 @@ public class vetajahorario extends JFrame {
         volvercurso.setForeground(Color.BLACK);
         volvercurso.setBackground(new Color(192, 192, 192));
         volvercurso.setFont(new Font("SansSerif", Font.BOLD, 14));
-        volvercurso.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Vuelve a la ventana anterior
-                ventanacrearcurso menu = new ventanacrearcurso();
-                menu.setVisible(true);
-                dispose();
-            }
+        volvercurso.addActionListener(e -> {
+            ventanacrearcurso menu = new ventanacrearcurso();
+            menu.setVisible(true);
+            dispose();
         });
         contentPane.add(volvercurso);
 
         // Botón "Guardar"
         JButton guardarHorario = new JButton("Guardar");
-        guardarHorario.setBounds(820, 420, 120, 40);
+        guardarHorario.setBounds(950, 420, 120, 40);
         guardarHorario.setForeground(Color.BLACK);
         guardarHorario.setBackground(new Color(192, 192, 192));
         guardarHorario.setFont(new Font("SansSerif", Font.BOLD, 14));
-        guardarHorario.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	ventanacursorealizado nuevo = new ventanacursorealizado();
-                nuevo.setVisible(true);
-                dispose();
-            }
+        guardarHorario.addActionListener(e -> {
+            ventanacursorealizado nuevo = new ventanacursorealizado();
+            nuevo.setVisible(true);
+            dispose();
         });
         contentPane.add(guardarHorario);
     }
 }
+
 
