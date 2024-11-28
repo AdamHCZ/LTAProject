@@ -1,13 +1,21 @@
 package GUI;
 
+import Code.*;
+import DBconnection.*;
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Code.Estudiante;
+import DBconnection.EstudianteDB;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -196,6 +204,7 @@ public class ventanatrabajador extends JFrame {
         guardar.setBounds(371, 479, 216, 41);
         guardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	boolean decision = true;
                 // Validación de campos
                 if (nombre.getText().isEmpty() || apellidopaterno.getText().isEmpty() || apellidomaterno.getText().isEmpty() ||
                     fechadenacimiento.getText().isEmpty() || telefono.getText().isEmpty() || ci.getText().isEmpty() ||
@@ -208,6 +217,7 @@ public class ventanatrabajador extends JFrame {
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
+                    decision = false;
                     return;
                 }
 
@@ -219,6 +229,7 @@ public class ventanatrabajador extends JFrame {
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
+                    decision = false;
                     return;
                 }
 
@@ -230,6 +241,7 @@ public class ventanatrabajador extends JFrame {
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
+                    decision = false;
                     return;
                 }
                 //ve que la fehca se lea bien
@@ -240,6 +252,7 @@ public class ventanatrabajador extends JFrame {
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
+                    decision = false;
                     return;
                 }
                 //ve que el ci este en numeros
@@ -250,6 +263,7 @@ public class ventanatrabajador extends JFrame {
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
+                    decision = false;
                     return;
                 }
                 //ve que este bien el correo 
@@ -260,12 +274,27 @@ public class ventanatrabajador extends JFrame {
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
+                    decision = false;
                     return;
                 }
 
                 // Mostrar ventana de tipo de trabajo si todas las validaciones pasan
                 ventanarealizado nuevaVentana = new ventanarealizado();
                 nuevaVentana.setVisible(true); // Haz visible la nueva ventana
+                
+                /*if(decision) {
+                	LocalDate fecharegistro = LocalDate.now();
+                	String fechaS = fecharegistro.toString();
+                	EmpleadoDB empleados = new EmpleadoDB();
+                	Empleado emp1 = new Empleado(nombre.getText(),apellidopaterno.getText(),
+                			apellidomaterno.getText(),fechadenacimiento.getText(),ci.getText(),
+                			telefono.getText(),correoelectronico.getText(),fechaS,Double.parseDouble(sueldo.getText()));
+                	estudiantes.addEstudiante(est1);
+                }*/
+                // Mostrar ventana de éxito si todas las validaciones pasan
+                ventanarealizado menu = new ventanarealizado();
+                menu.setVisible(true);
+                
                 dispose(); // Cierra la ventana actual
             }
         });

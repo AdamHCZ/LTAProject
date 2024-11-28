@@ -7,6 +7,7 @@
   PRIMARY KEY (id_aula)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 */
+
 LOCK TABLES aula WRITE;
 
 UNLOCK TABLES;
@@ -30,6 +31,7 @@ INSERT INTO aula (nombre_aula, capacidad, disponibilidad) VALUES
   PRIMARY KEY (id_hora)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 */
+
 LOCK TABLES hora WRITE;
 
 UNLOCK TABLES;
@@ -74,13 +76,13 @@ INSERT INTO hora (id_hora, dia, hora_inicio, hora_fin) VALUES
 (34, 'V', '16:35:00', '18:15:00'),
 (35, 'V', '18:30:00', '20:10:00'),
 
-(29, 'S', '07:00:00', '08:40:00'),
-(30, 'S', '08:55:00', '10:35:00'),
-(31, 'S', '10:50:00', '12:30:00'),
-(32, 'S', '12:45:00', '14:25:00'),
-(33, 'S', '14:40:00', '16:20:00'),
-(34, 'S', '16:35:00', '18:15:00'),
-(35, 'S', '18:30:00', '20:10:00');
+(36, 'S', '07:00:00', '08:40:00'),
+(37, 'S', '08:55:00', '10:35:00'),
+(38, 'S', '10:50:00', '12:30:00'),
+(39, 'S', '12:45:00', '14:25:00'),
+(40, 'S', '14:40:00', '16:20:00'),
+(41, 'S', '16:35:00', '18:15:00'),
+(42, 'S', '18:30:00', '20:10:00');
 
 -- DROP TABLE IF EXISTS tipo_empleo;
 /*CREATE TABLE tipo_empleo (
@@ -90,10 +92,12 @@ INSERT INTO hora (id_hora, dia, hora_inicio, hora_fin) VALUES
   PRIMARY KEY (id_tipo_empleo)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 */
+
+
 LOCK TABLES tipo_empleo WRITE;
 
 UNLOCK TABLES;
-INSERT TO tipo_empleo (nombrem ,nivel)VALUES
+INSERT INTO tipo_empleo (nombre,nivel)VALUES
 
 ('Director General', 1),        -- Director General
 ('Subdirector', 2),             -- Subdirecto
@@ -128,10 +132,12 @@ INSERT TO tipo_empleo (nombrem ,nivel)VALUES
   FOREIGN KEY (tipo_empleo_id) REFERENCES tipo_empleo (id_tipo_empleo) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 */
+
+
 LOCK TABLES empleado WRITE;
 
 UNLOCK TABLES;
-NSERT INTO mpleado (nombre, ap_paterno, ap_materno, ci, fecha_nacimiento, telefono, email, sueldo, ubicacion, experiencia, detalles, tipo_empleo_id) VALUES
+INSERT INTO empleado (nombre, ap_paterno, ap_materno, ci, fecha_nacimiento, telefono, email, sueldo, ubicacion, experiencia, detalles, tipo_empleo_id) VALUES
 ('Carlos', 'Vargas', 'Hernandez', '123456789', '1980-03-14', '987654380', 'carlos.vargas@gmail.com', 5000.00, 'Oficina Central', 'Más de 15 años de experiencia en gestión administrativa', 'Experto en planificación y gestión de proyectos', 1), -- Director General
 ('María', 'Gonzalez', 'Lopez', '987654321', '1985-07-22', '987654381', 'maria.gonzalez@gmail.com', 4500.00, 'Oficina Central', '10 años de experiencia en liderazgo', 'Experta en la dirección de equipos', 2), -- Subdirector
 ('Roberto', 'Calle', 'Morales', '852963741', '1990-02-10', '987654382', 'roberto.calle@gmail.com', 4000.00, 'Aula 1', '6 años de experiencia como coordinador', 'Responsable de la coordinación de cursos y recursos', 3), -- Coordinador
@@ -183,13 +189,13 @@ INSERT INTO Empleado (nombre, ap_paterno, ap_materno, ci, fecha_nacimiento, tele
 
 -- Profesores para Economía
 INSERT INTO Empleado (nombre, ap_paterno, ap_materno, ci, fecha_nacimiento, telefono, email, sueldo, ubicacion, experiencia, detalles, tipo_empleo_id) VALUES
-('Pablo', 'Quintero', 'Jiménez', '78901234', '1980-05-20', '654321789', 'pablo.quintero@gmail.com', 3500.00, 'Santa Cruz', 'Profesor de microeconomía', 'Microeconomía', 5),
-('Daniela', 'Ríos', 'Salinas', '89012345', '1986-09-12', '321987654', 'daniela.rios@gmail.com', 3400.00, 'La Paz', 'Experta en macroeconomía', 'Macroeconomía', 5);
+('Pablo', 'Quintero', 'Jiménez', '78901204', '1980-05-20', '654321789', 'pablo.quintero@gmail.com', 3500.00, 'Santa Cruz', 'Profesor de microeconomía', 'Microeconomía', 5),
+('Daniela', 'Ríos', 'Salinas', '89011345', '1986-09-12', '321987654', 'daniela.rios@gmail.com', 3400.00, 'La Paz', 'Experta en macroeconomía', 'Macroeconomía', 5);
 
 -- Profesores para Derecho
 INSERT INTO Empleado (nombre, ap_paterno, ap_materno, ci, fecha_nacimiento, telefono, email, sueldo, ubicacion, experiencia, detalles, tipo_empleo_id) VALUES
-('Francisco', 'Molina', 'Cruz', '90123456', '1981-12-05', '159357486', 'francisco.molina@gmail.com', 3600.00, 'Cochabamba', 'Especialista en derecho constitucional', 'Derecho Constitucional', 5),
-('Gabriela', 'Ramos', 'Ortiz', '01234567', '1989-10-16', '753159486', 'gabriela.ramos@gmail.com', 3500.00, 'Tarija', 'Doctora en derecho penal', 'Derecho Penal', 5);
+('Francisco', 'Molina', 'Cruz', '90123126', '1981-12-05', '159357486', 'francisco.molina@gmail.com', 3600.00, 'Cochabamba', 'Especialista en derecho constitucional', 'Derecho Constitucional', 5),
+('Gabriela', 'Ramos', 'Ortiz', '01234512', '1989-10-16', '753159486', 'gabriela.ramos@gmail.com', 3500.00, 'Tarija', 'Doctora en derecho penal', 'Derecho Penal', 5);
 
 -- DROP TABLE IF EXISTS estudiante;
 /*CREATE TABLE estudiante (
@@ -212,59 +218,39 @@ INSERT INTO Empleado (nombre, ap_paterno, ap_materno, ci, fecha_nacimiento, tele
 LOCK TABLES estudiante WRITE;
 
 UNLOCK TABLES;
-INSERT INTO estudiante (nombre, ap_paterno, ap_materno, ci, fecha_nacimiento, telefono, email, edad, fecha_inscripcion, estado_inscripcion) VALUES
-('Juan', 'Perez', 'Lopez', '123456789', '2000-01-15', '987654321', 'juan.perez@gmail.com', 24, '2024-11-20', TRUE),
-('Maria', 'Gomez', 'Fernandez', '987654321', '1998-05-22', '987654322', 'maria.gomez@gmail.com', 26, '2024-11-19', TRUE),
-('Carlos', 'Rodriguez', 'Martinez', '135792468', '2001-03-10', '987654323', 'carlos.rodriguez@gmail.com', 23, '2024-11-18', TRUE),
-('Ana', 'Sanchez', 'Ramirez', '246813579', '1997-12-05', '987654324', 'ana.sanchez@gmail.com', 27, '2024-11-17', TRUE),
-('Pedro', 'Hernandez', 'Diaz', '369258147', '2000-07-30', '987654325', 'pedro.hernandez@gmail.com', 24, '2024-11-16', TRUE),
-('Laura', 'Martinez', 'Vazquez', '468135792', '1999-09-11', '987654326', 'laura.martinez@gmail.com', 25, '2024-11-15', TRUE),
-('Luis', 'Lopez', 'Garcia', '579135246', '2002-02-03', '987654327', 'luis.lopez@gmail.com', 22, '2024-11-14', TRUE),
-('Isabel', 'Perez', 'Soto', '684213579', '1998-06-17', '987654328', 'isabel.perez@gmail.com', 26, '2024-11-13', TRUE),
-('Ricardo', 'Santiago', 'Salazar', '791246835', '2000-04-21', '987654329', 'ricardo.santiago@gmail.com', 24, '2024-11-12', TRUE),
-('Marta', 'Gonzalez', 'Castillo', '852963741', '2001-01-09', '987654330', 'marta.gonzalez@gmail.com', 23, '2024-11-11', TRUE),
-('Jose', 'Ruiz', 'Moreno', '963741258', '1997-08-20', '987654331', 'jose.ruiz@gmail.com', 27, '2024-11-10', TRUE),
-('Lucia', 'Flores', 'Cabrera', '741258963', '1999-11-30', '987654332', 'lucia.flores@gmail.com', 25, '2024-11-09', TRUE),
-('Andres', 'Alvarez', 'Munoz', '123456987', '2000-05-15', '987654333', 'andres.alvarez@gmail.com', 24, '2024-11-08', TRUE),
-('Patricia', 'Jimenez', 'Paredes', '987654123', '1998-02-17', '987654334', 'patricia.jimenez@gmail.com', 26, '2024-11-07', TRUE),
-('Fernando', 'Diaz', 'Blanco', '456789123', '2001-06-14', '987654335', 'fernando.diaz@gmail.com', 23, '2024-11-06', TRUE),
-('Sandra', 'Mendoza', 'Lopez', '159753486', '2002-12-09', '987654336', 'sandra.mendoza@gmail.com', 22, '2024-11-05', TRUE),
-('Miguel', 'Rojas', 'Torres', '258963147', '1999-03-25', '987654337', 'miguel.rojas@gmail.com', 25, '2024-11-04', TRUE),
-('Beatriz', 'Ruiz', 'Gonzalez', '753159258', '2000-10-04', '987654338', 'beatriz.ruiz@gmail.com', 24, '2024-11-03', TRUE),
-('Oscar', 'Lopez', 'Perez', '369258741', '1997-12-16', '987654339', 'oscar.lopez@gmail.com', 27, '2024-11-02', TRUE),
-('Raul', 'Jimenez', 'Vega', '741852963', '2001-07-22', '987654340', 'raul.jimenez@gmail.com', 23, '2024-11-01', TRUE),
-('Elena', 'Mora', 'Hernandez', '258741369', '1998-04-12', '987654341', 'elena.mora@gmail.com', 26, '2024-10-31', TRUE),
-('Diego', 'Salazar', 'Ruiz', '159753486', '2000-08-23', '987654342', 'diego.salazar@gmail.com', 24, '2024-10-30', TRUE),
-('Sara', 'Lozano', 'Jimenez', '258963741', '1997-11-18', '987654343', 'sara.lozano@gmail.com', 27, '2024-10-29', TRUE),
-('Antonio', 'Cabrera', 'Gomez', '987123654', '2001-03-19', '987654344', 'antonio.cabrera@gmail.com', 23, '2024-10-28', TRUE),
-('Cristina', 'Gonzalez', 'Sanchez', '741369258', '2000-01-30', '987654345', 'cristina.gonzalez@gmail.com', 24, '2024-10-27', TRUE),
-('David', 'Soto', 'Ramirez', '159852456', '1998-07-12', '987654346', 'david.soto@gmail.com', 26, '2024-10-26', TRUE),
-('Victoria', 'Torres', 'Mendez', '753951852', '2001-05-07', '987654347', 'victoria.torres@gmail.com', 23, '2024-10-25', TRUE),
-('Javier', 'Salazar', 'Morales', '852741963', '1999-10-14', '987654348', 'javier.salazar@gmail.com', 25, '2024-10-24', TRUE);
-('Joaquin', 'Castillo', 'Mendoza', '852963741', '1995-11-20', '987654349', 'joaquin.castillo@gmail.com', 29, '2021-11-15', TRUE),
-('Paula', 'Fernandez', 'Serrano', '741258369', '1999-04-05', '987654350', 'paula.fernandez@gmail.com', 25, '2022-03-20', TRUE),
-('Esteban', 'Vega', 'Morales', '963852741', '2003-02-12', '987654351', 'esteban.vega@gmail.com', 21, '2024-02-10', TRUE),
-('Sofia', 'Ramirez', 'Delgado', '159753258', '2001-06-22', '987654352', 'sofia.ramirez@gmail.com', 23, '2023-07-15', TRUE),
-('Alejandro', 'Paredes', 'Gonzalez', '951753852', '1997-08-14', '987654353', 'alejandro.paredes@gmail.com', 27, '2022-09-10', TRUE),
-('Carla', 'Lopez', 'Fernandez', '258963147', '1996-12-30', '987654354', 'carla.lopez@gmail.com', 28, '2020-11-02', TRUE),
-('Andres', 'Mendez', 'Torres', '753159258', '2004-01-18', '987654355', 'andres.mendez@gmail.com', 20, '2024-03-05', TRUE),
-('Laura', 'Bermudez', 'Salazar', '456789321', '1998-09-25', '987654356', 'laura.bermudez@gmail.com', 26, '2021-08-13', TRUE),
-('Jose', 'Rodriguez', 'Navarro', '987456321', '1995-07-11', '987654357', 'jose.rodriguez@gmail.com', 29, '2019-01-21', TRUE),
-('Marina', 'Gomez', 'Lopez', '741852963', '2002-05-13', '987654358', 'marina.gomez@gmail.com', 22, '2023-09-30', TRUE),
-('Felipe', 'Torres', 'Castro', '963741852', '2000-08-01', '987654359', 'felipe.torres@gmail.com', 24, '2023-06-17', TRUE),
-('Viviana', 'Soto', 'Alvarez', '951246753', '2001-10-03', '987654360', 'viviana.soto@gmail.com', 23, '2022-05-18', TRUE),
-('Ricardo', 'Pacheco', 'Ruiz', '852741369', '1998-03-21', '987654361', 'ricardo.pacheco@gmail.com', 26, '2021-02-25', TRUE),
-('Patricia', 'Gomez', 'Mora', '369852147', '1999-12-09', '987654362', 'patricia.gomez@gmail.com', 25, '2021-06-12', TRUE),
-('Enrique', 'Lopez', 'Mendez', '741963852', '1997-02-28', '987654363', 'enrique.lopez@gmail.com', 27, '2020-01-19', TRUE),
-('Santiago', 'Calle', 'Molina', '258741963', '2003-04-30', '987654364', 'santiago.calle@gmail.com', 21, '2024-01-08', TRUE),
-('Jorge', 'Gonzalez', 'Castillo', '456123789', '2004-10-14', '987654365', 'jorge.gonzalez@gmail.com', 20, '2024-04-22', TRUE),
-('Claudia', 'Reyes', 'Vargas', '741258369', '2001-01-10', '987654366', 'claudia.reyes@gmail.com', 23, '2023-07-02', TRUE),
-('Hector', 'Caceres', 'Mendoza', '987654123', '1996-05-15', '987654367', 'hector.caceres@gmail.com', 28, '2022-11-29', TRUE),
-('Gabriela', 'Martinez', 'Vega', '321654987', '2000-09-18', '987654368', 'gabriela.martinez@gmail.com', 24, '2023-04-10', TRUE),
-('Julian', 'Morales', 'Salazar', '852741963', '1997-03-07', '987654369', 'julian.morales@gmail.com', 27, '2021-09-24', TRUE),
-('Raquel', 'Perez', 'Hernandez', '159753258', '2003-07-22', '987654370', 'raquel.perez@gmail.com', 21, '2024-03-28', TRUE),
-('Pablo','Escobar','Salvador', '10928215','1998-01-01','77764494','elchapo@gmail.com',26,'2024-03-28',TRUE);
-('Goku','Son ','Kakaroto','7777777','1986-04-04','84561235','mondongo@gmail.com',54,'2024-04-04',TRUE)
+INSERT INTO estudiante (nombre, ap_paterno, ap_materno, ci, fecha_nacimiento, telefono, email, edad, fecha_registro, inscrito) VALUES
+('Juan', 'Perez', 'Lopez', '123456781', '2000-01-15', '987654321', 'juan.perezl1@gmail.com', 24, '2024-11-20', TRUE),
+('Maria', 'Gomez', 'Fernandez', '987654322', '1998-05-22', '987654322', 'maria.gomezf2@gmail.com', 26, '2024-11-19', TRUE),
+('Carlos', 'Rodriguez', 'Martinez', '135712469', '2001-03-10', '987654323', 'carlos.rodriguezm3@gmail.com', 23, '2024-11-18', TRUE),
+('Ana', 'Sanchez', 'Ramirez', '246813580', '1997-12-05', '987654324', 'ana.sanchez4@gmail.com', 27, '2024-11-17', TRUE),
+('Pedro', 'Hernandez', 'Diaz', '369258148', '2000-07-30', '987654325', 'pedro.hernandez5@gmail.com', 24, '2024-11-16', TRUE),
+('Laura', 'Martinez', 'Vazquez', '468135793', '1999-09-11', '987654326', 'laura.martinez6@gmail.com', 25, '2024-11-15', TRUE),
+('Luis', 'Lopez', 'Garcia', '579135247', '2002-02-03', '987654327', 'luis.lopez7@gmail.com', 22, '2024-11-14', TRUE),
+('Isabel', 'Perez', 'Soto', '684213580', '1998-06-17', '987654328', 'isabel.perez8@gmail.com', 26, '2024-11-13', TRUE),
+('Ricardo', 'Santiago', 'Salazar', '791246836', '2000-04-21', '987654329', 'ricardo.santiago9@gmail.com', 24, '2024-11-12', TRUE),
+('Marta', 'Gonzalez', 'Castillo', '852963742', '2001-01-09', '987654330', 'marta.gonzalez10@gmail.com', 23, '2024-11-11', TRUE),
+('Jose', 'Ruiz', 'Moreno', '963741259', '1997-08-20', '987654331', 'jose.ruiz11@gmail.com', 27, '2024-11-10', TRUE),
+('Lucia', 'Flores', 'Cabrera', '741258964', '1999-11-30', '987654332', 'lucia.flores12@gmail.com', 25, '2024-11-09', TRUE),
+('Andres', 'Alvarez', 'Munoz', '123456988', '2000-05-15', '987654333', 'andres.alvarez13@gmail.com', 24, '2024-11-08', TRUE),
+('Patricia', 'Jimenez', 'Paredes', '987654124', '1998-02-17', '987654334', 'patricia.jimenez14@gmail.com', 26, '2024-11-07', TRUE),
+('Fernando', 'Diaz', 'Blanco', '456789124', '2001-06-14', '987654335', 'fernando.diaz15@gmail.com', 23, '2024-11-06', TRUE),
+('Sandra', 'Mendoza', 'Lopez', '159753482', '2002-12-09', '987654336', 'sandra.mendoza16@gmail.com', 22, '2024-11-05', TRUE),
+('Miguel', 'Rojas', 'Torres', '258963148', '1999-03-25', '987654337', 'miguel.rojas17@gmail.com', 25, '2024-11-04', TRUE),
+('Beatriz', 'Ruiz', 'Gonzalez', '753159259', '2000-10-04', '987654338', 'beatriz.ruiz18@gmail.com', 24, '2024-11-03', TRUE),
+('Oscar', 'Lopez', 'Perez', '369258742', '1997-12-16', '987654339', 'oscar.lopez19@gmail.com', 27, '2024-11-02', TRUE),
+('Raul', 'Jimenez', 'Vega', '741852964', '2001-07-22', '987654340', 'raul.jimenez20@gmail.com', 23, '2024-11-01', TRUE),
+('Elena', 'Mora', 'Hernandez', '258741370', '1998-04-12', '987654341', 'elena.mora21@gmail.com', 26, '2024-10-31', TRUE),
+('Diego', 'Salazar', 'Ruiz', '159753487', '2000-08-23', '987654342', 'diego.salazar22@gmail.com', 24, '2024-10-30', TRUE),
+('Sara', 'Lozano', 'Jimenez', '258963742', '1997-11-18', '987654343', 'sara.lozano23@gmail.com', 27, '2024-10-29', TRUE),
+('Antonio', 'Cabrera', 'Gomez', '987123655', '2001-03-19', '987654344', 'antonio.cabrera24@gmail.com', 23, '2024-10-28', TRUE),
+('Cristina', 'Gonzalez', 'Sanchez', '741369259', '2000-01-30', '987654345', 'cristina.gonzalez25@gmail.com', 24, '2024-10-27', TRUE),
+('David', 'Soto', 'Ramirez', '159852457', '1998-07-12', '987654346', 'david.soto26@gmail.com', 26, '2024-10-26', TRUE),
+('Victoria', 'Torres', 'Mendez', '753951853', '2001-05-07', '987654347', 'victoria.torres27@gmail.com', 23, '2024-10-25', TRUE),
+('Javier', 'Salazar', 'Morales', '852741963', '1999-10-14', '987654348', 'javier.salazar28@gmail.com', 25, '2024-10-24', TRUE),
+('Joaquin', 'Castillo', 'Mendoza', '852963712', '1995-11-20', '987654349', 'joaquin.castillo29@gmail.com', 29, '2021-11-15', TRUE),
+('Paula', 'Fernandez', 'Serrano', '741258361', '1999-04-05', '987654350', 'paula.fernandez30@gmail.com', 25, '2022-03-20', TRUE),
+('Pablo','Escobar','Salvador', '10928216','1998-01-01','77764495','elchapo2@gmail.com',26,'2024-03-28',TRUE),
+('Goku','Son ','Kakaroto','7777778','1986-04-04','84561236','mondongo2@gmail.com',54,'2024-04-04',TRUE);
 
 -- DROP TABLE IF EXISTS malla;
 /*CREATE TABLE malla (
@@ -275,20 +261,22 @@ INSERT INTO estudiante (nombre, ap_paterno, ap_materno, ci, fecha_nacimiento, te
   PRIMARY KEY (id_malla)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 */
+
+
 LOCK TABLES malla WRITE;
 
-UNLOCK TABLES;}
+UNLOCK TABLES;
 
-INSERT INTO malla (num_evaluaciones, fecha_recuperacion, fecha_consulta, tema_id, plan_curricular_id) VALUES
-(3, '2024-12-15', '2024-12-01', 1, 1),  
-(2, '2024-12-20', '2024-12-05', 2, 2),  
-(3, '2024-12-25', '2024-12-10', 3, 1), 
-(1, '2025-01-05', '2024-12-15', 4, 3),  
-(3, '2025-01-10', '2024-12-20', 5, 2),  
-(3, '2025-01-12', '2024-12-25', 6, 1),  
-(2, '2025-01-15', '2024-12-28', 7, 3),  
-(1, '2025-02-01', '2025-01-10', 8, 2),  
-(3, '2025-02-05', '2025-01-15', 9, 1);  
+INSERT INTO malla (evaluaciones , fecha_recuperacion, fecha_consulta) VALUES
+(3, '2024-12-15', '2024-12-01'),  
+(2, '2024-12-20', '2024-12-05'),  
+(3, '2024-12-25', '2024-12-10'), 
+(1, '2025-01-05', '2024-12-15'),  
+(3, '2025-01-10', '2024-12-20'),  
+(3, '2025-01-12', '2024-12-25'),  
+(2, '2025-01-15', '2024-12-28'),  
+(1, '2025-02-01', '2025-01-10'),  
+(3, '2025-02-05', '2025-01-15');  
 
 
 -- DROP TABLE IF EXISTS temario;
@@ -300,10 +288,12 @@ INSERT INTO malla (num_evaluaciones, fecha_recuperacion, fecha_consulta, tema_id
   PRIMARY KEY (id_temario)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 */
+
+
 LOCK TABLES temario WRITE;
 
 UNLOCK TABLES;
-INSERT INTO temario (area, nombre_tema, capitulo) VALUES
+INSERT INTO temario (area, tema, capitulos) VALUES
 ('Matemáticas', 'Cálculo Diferencial', 'Capítulo 1'),
 ('Matemáticas', 'Cálculo Integral', 'Capítulo 2'),
 ('Matemáticas', 'Probabilidades y Estadística', 'Capítulo 1'),
@@ -324,6 +314,7 @@ INSERT INTO temario (area, nombre_tema, capitulo) VALUES
 ('Derecho', 'Derecho Constitucional', 'Capítulo 1'),
 ('Derecho', 'Derecho Penal', 'Capítulo 2');
 
+
 -- DROP TABLE IF EXISTS plan_curricular;
 /*CREATE TABLE plan_curricular (
   id_plan_curricular int(11) NOT NULL AUTO_INCREMENT,
@@ -334,6 +325,8 @@ INSERT INTO temario (area, nombre_tema, capitulo) VALUES
   FOREIGN KEY (malla_id) REFERENCES malla(id_malla) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 */
+
+
 LOCK TABLES plan_curricular WRITE;
 
 UNLOCK TABLES;
@@ -366,20 +359,22 @@ VALUES (1, 1),  -- Cálculo Diferencial, malla 1
   FOREIGN KEY (plan_curricular_id) REFERENCES plan_curricular (id_plan_curricular) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 */
+
+
 LOCK TABLES curso WRITE;
 
 UNLOCK TABLES;
-INSERT INTO curso (paralelo, costo, formato, cupos, gestion, duracion, docente_id, plan_curricular_id, horario_id) VALUES
-('A', 350.00, 'Presencial', 30, '2024-1', 16, 1, 1, 1), -- Matemáticas: Cálculo Diferencial
-('B', 300.00, 'Virtual', 25, '2024-1', 16, 2, 2, 2),   -- Matemáticas: Cálculo Integral
-('A', 320.00, 'Híbrido', 20, '2024-1', 16, 3, 3, 3),   -- Matemáticas: Probabilidades y Estadística
-('A', 400.00, 'Presencial', 40, '2024-1', 16, 4, 4, 4), -- Física: Termodinámica
-('B', 420.00, 'Virtual', 35, '2024-1', 16, 5, 5, 5),   -- Física: Óptica
-('A', 380.00, 'Presencial', 25, '2024-1', 16, 6, 6, 6), -- Química: Físicoquímica
-('B', 360.00, 'Híbrido', 20, '2024-1', 16, 7, 7, 7),   -- Química: Química Orgánica
-('A', 300.00, 'Virtual', 30, '2024-1', 12, 8, 8, 8),   -- Programación: Python Básico
-('A', 350.00, 'Híbrido', 20, '2024-1', 12, 9, 9, 9),   -- Diseño Gráfico: Illustrator Avanzado
-('B', 280.00, 'Presencial', 25, '2024-1', 12, 10, 10, 10); -- Historia: Historia Universal
+INSERT INTO curso (paralelo, costo, formato, cupos, gestion, duracion, docente_id, plan_curricular_id) VALUES
+('A', 350.00, 'Presencial', 30, '2024-1', 16, 1, 1), -- Matemáticas: Cálculo Diferencial
+('B', 300.00, 'Virtual', 25, '2024-1', 16, 2, 2),   -- Matemáticas: Cálculo Integral
+('A', 320.00, 'Híbrido', 20, '2024-1', 16, 3, 3),   -- Matemáticas: Probabilidades y Estadística
+('A', 400.00, 'Presencial', 40, '2024-1', 16, 4, 4), -- Física: Termodinámica
+('B', 420.00, 'Virtual', 35, '2024-1', 16, 5, 5),   -- Física: Óptica
+('A', 380.00, 'Presencial', 25, '2024-1', 16, 6, 6), -- Química: Físicoquímica
+('B', 360.00, 'Híbrido', 20, '2024-1', 16, 7, 7),   -- Química: Química Orgánica
+('A', 300.00, 'Virtual', 30, '2024-1', 12, 8, 8),   -- Programación: Python Básico
+('A', 350.00, 'Híbrido', 20, '2024-1', 12, 9, 9),   -- Diseño Gráfico: Illustrator Avanzado
+('B', 280.00, 'Presencial', 25, '2024-1', 12, 10, 1); -- Historia: Historia Universal
 
 
 -- DROP TABLE IF EXISTS horario;
@@ -407,7 +402,7 @@ INSERT INTO horario (hora_id, aula_id, curso_id) VALUES
 (7, 1, 7), -- Lunes, 18:30-20:10, Aula 1, Curso 7
 (1, 2, 8), -- Martes, 07:00-08:40, Aula 2, Curso 8
 (2, 3, 9), -- Martes, 08:55-10:35, Aula 3, Curso 9
-(3, 1, 10); -- Martes, 10:50-12:30, Aula 1, Curso 10
+(3, 1, 1); -- Martes, 10:50-12:30, Aula 1, Curso 10
 
 
 -- DROP TABLE IF EXISTS inscripcion;

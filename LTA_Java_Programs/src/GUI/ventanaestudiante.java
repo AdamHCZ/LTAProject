@@ -1,4 +1,8 @@
 package GUI;
+import Code.*;
+import DBconnection.*;
+
+import java.time.LocalDate;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -84,6 +88,7 @@ public class ventanaestudiante extends JFrame {
         lblNewLabel_1.setFont(new Font("Cambria", Font.BOLD, 30));
         lblNewLabel_1.setBounds(10, 132, 134, 50);
         contentPane.add(lblNewLabel_1);
+        
         
         JLabel lblNewLabel_1_1 = new JLabel("APELLIDO:");
         lblNewLabel_1_1.setForeground(Color.WHITE);
@@ -187,6 +192,8 @@ public class ventanaestudiante extends JFrame {
         guardar.setBounds(369, 454, 216, 41);
         guardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	
+            	boolean decision = true;
                 // Validación de campos
                 if (nombre.getText().isEmpty() || apellidopaterno.getText().isEmpty() || apellidomaterno.getText().isEmpty() ||
                     fechadenacimiento.getText().isEmpty() || telefono.getText().isEmpty() || ci.getText().isEmpty() ||
@@ -199,6 +206,7 @@ public class ventanaestudiante extends JFrame {
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
+                    decision = false;
                     return;
                 }
                 //valida el telefono que sean numeros
@@ -209,16 +217,18 @@ public class ventanaestudiante extends JFrame {
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
+                    decision = false;
                     return;
                 }
                 //valida que el correo sea @gmail
-                if (!correoelectronico.getText().endsWith("@gmail.com")) {
+                if (!correoelectronico.getText().endsWith("@gmail.com") && !correoelectronico.getText().endsWith("@ucb.edu.bo")) {
                     JOptionPane.showMessageDialog(
                         null, 
                         "El campo 'Correo' debe ser una dirección de correo válida de Gmail (@gmail.com).", 
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
+                    decision = false;
                     return;
                 }
                 
@@ -230,6 +240,7 @@ public class ventanaestudiante extends JFrame {
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
+                    decision = false;
                     return;
                 }
                 
@@ -241,6 +252,7 @@ public class ventanaestudiante extends JFrame {
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
+                    decision = false;
                     return;
                 }
                 //valida que el ci sean numeros
@@ -251,7 +263,17 @@ public class ventanaestudiante extends JFrame {
                         "Error", 
                         JOptionPane.ERROR_MESSAGE
                     );
+                    decision = false;
                     return;
+                }
+                if(decision) {
+                	LocalDate fecharegistro = LocalDate.now();
+                	String fechaS = fecharegistro.toString();
+                	EstudianteDB estudiantes = new EstudianteDB();
+                	Estudiante est1 = new Estudiante(nombre.getText(),apellidopaterno.getText(),
+                			apellidomaterno.getText(),fechadenacimiento.getText(),ci.getText(),
+                			telefono.getText(),correoelectronico.getText(),fechaS,Integer.parseInt(edad.getText()),true);
+                	estudiantes.addEstudiante(est1);
                 }
                 // Mostrar ventana de éxito si todas las validaciones pasan
                 ventanarealizado menu = new ventanarealizado();
