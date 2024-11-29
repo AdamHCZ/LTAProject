@@ -5,13 +5,9 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -23,7 +19,7 @@ public class ventanavercurso extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JTable tblHorario;
-    private JLabel lblInformacionCurso;
+    private JTable tblInformacionCurso;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -110,23 +106,39 @@ public class ventanavercurso extends JFrame {
         infoPanel.setBackground(Color.WHITE);
         mainPanel.add(infoPanel);
 
-        lblInformacionCurso = new JLabel("Seleccione un curso para ver la información", JLabel.CENTER);
-        lblInformacionCurso.setFont(new Font("Cambria", Font.PLAIN, 18));
-        lblInformacionCurso.setForeground(Color.BLACK);
-        infoPanel.add(lblInformacionCurso, BorderLayout.CENTER);
+        // Crear la tabla para mostrar la información del curso
+        String[] columnNamesInfo = { "Paralelo", "Costo", "Cupos", "Docente", "Modalidad" };
+        String[][] dataInfo = {
+            { "", "", "", "", "" } // Fila inicial vacía
+        };
+
+        DefaultTableModel infoModel = new DefaultTableModel(dataInfo, columnNamesInfo) {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // La tabla no será editable
+            }
+        };
+
+        tblInformacionCurso = new JTable(infoModel);
+        tblInformacionCurso.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        tblInformacionCurso.setRowHeight(30);
+        tblInformacionCurso.getTableHeader().setFont(new Font("SansSerif", Font.BOLD, 16));
+        JScrollPane scrollInfo = new JScrollPane(tblInformacionCurso);
+        infoPanel.add(scrollInfo, BorderLayout.CENTER);
 
         // Evento para el combo box
-        comboBoxCursos.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String cursoSeleccionado = (String) comboBoxCursos.getSelectedItem();
-                actualizarHorarioYInformacion(cursoSeleccionado);
-            }
+        comboBoxCursos.addActionListener(e -> {
+            String cursoSeleccionado = (String) comboBoxCursos.getSelectedItem();
+            actualizarHorarioYInformacion(cursoSeleccionado);
         });
     }
 
     private void actualizarHorarioYInformacion(String curso) {
         // Actualizar horario según el curso seleccionado
         DefaultTableModel model = (DefaultTableModel) tblHorario.getModel();
+        DefaultTableModel infoModel = (DefaultTableModel) tblInformacionCurso.getModel();
 
         for (int i = 0; i < model.getRowCount(); i++) {
             for (int j = 1; j < model.getColumnCount(); j++) {
@@ -134,25 +146,51 @@ public class ventanavercurso extends JFrame {
             }
         }
 
+        // Limpia la fila de la tabla de información
+        for (int j = 0; j < infoModel.getColumnCount(); j++) {
+            infoModel.setValueAt("", 0, j);
+        }
+
         if ("Matemáticas".equals(curso)) {
             for (int i = 0; i < model.getRowCount(); i++) {
                 model.setValueAt("Ocupado", i, 1); // Lunes ocupado
             }
-            lblInformacionCurso.setText("<html><h2>Matemáticas</h2><p>Curso de álgebra, geometría y cálculo.</p></html>");
+            infoModel.setValueAt("A", 0, 0);
+            infoModel.setValueAt("$200", 0, 1);
+            infoModel.setValueAt("25", 0, 2);
+            infoModel.setValueAt("Dr. Pérez", 0, 3);
+            infoModel.setValueAt("Presencial", 0, 4);
         } else if ("Ciencias".equals(curso)) {
             model.setValueAt("Ocupado", 1, 2); // Martes 10:00-12:00 ocupado
-            lblInformacionCurso.setText("<html><h2>Ciencias</h2><p>Curso de física, química y biología.</p></html>");
+            infoModel.setValueAt("B", 0, 0);
+            infoModel.setValueAt("$180", 0, 1);
+            infoModel.setValueAt("20", 0, 2);
+            infoModel.setValueAt("Mtra. López", 0, 3);
+            infoModel.setValueAt("Virtual", 0, 4);
         } else if ("Historia".equals(curso)) {
             model.setValueAt("Ocupado", 2, 3); // Miércoles 14:00-16:00 ocupado
-            lblInformacionCurso.setText("<html><h2>Historia</h2><p>Curso sobre historia mundial y nacional.</p></html>");
+            infoModel.setValueAt("C", 0, 0);
+            infoModel.setValueAt("$150", 0, 1);
+            infoModel.setValueAt("30", 0, 2);
+            infoModel.setValueAt("Dr. Ramírez", 0, 3);
+            infoModel.setValueAt("Presencial", 0, 4);
         } else if ("Arte".equals(curso)) {
             model.setValueAt("Ocupado", 3, 4); // Jueves 16:00-18:00 ocupado
-            lblInformacionCurso.setText("<html><h2>Arte</h2><p>Curso de pintura, escultura y diseño.</p></html>");
+            infoModel.setValueAt("D", 0, 0);
+            infoModel.setValueAt("$220", 0, 1);
+            infoModel.setValueAt("15", 0, 2);
+            infoModel.setValueAt("Mtro. Castillo", 0, 3);
+            infoModel.setValueAt("Mixta", 0, 4);
         } else if ("Programación".equals(curso)) {
             model.setValueAt("Ocupado", 4, 5); // Viernes 18:00-20:00 ocupado
-            lblInformacionCurso.setText("<html><h2>Programación</h2><p>Curso sobre Java, Python y estructuras de datos.</p></html>");
+            infoModel.setValueAt("E", 0, 0);
+            infoModel.setValueAt("$250", 0, 1);
+            infoModel.setValueAt("20", 0, 2);
+            infoModel.setValueAt("Ing. Gómez", 0, 3);
+            infoModel.setValueAt("Virtual", 0, 4);
         }
     }
 }
+
 
 
